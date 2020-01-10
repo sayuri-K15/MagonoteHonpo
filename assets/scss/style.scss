@@ -5,7 +5,10 @@ $orange: #FD6001;
 $lightOrange: #FEF6E0;
 $yellow: #F2F20D;
 $blue: #0B83FA;
+$lightGray: #EAEAEA;
+$gray: #707070;
 $black: #383838;
+$pink: #FF7676;
 
 html* {
     box-sizing: border-box;
@@ -24,7 +27,7 @@ ul {
 }
 
 .container {
-    width: 80%;
+    width: 1600px;
     margin: 0 auto;
 }
 
@@ -103,7 +106,7 @@ ul {
         text-indent: -9999px;
 
         &:hover {
-          border-bottom: 3px solid $orange;
+            border-bottom: 3px solid $orange;
         }
     }
 }
@@ -124,27 +127,67 @@ ul {
 // -------------PURPOSE----------------
 
 .purpose {
-    width: 100%;
+    width: 75%;
+    border: solid 3px $black;
     text-align: center;
-    margin-bottom: 3rem;
+    margin: 0 auto 10rem;
+    position: relative;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        margin: auto;
+    }
+
+    &::before {
+        bottom: -6.3rem;
+        border-top: 6.1rem solid $black;
+        border-left: 3.1rem solid transparent;
+        border-right: 3.1rem solid transparent;
+    }
+
+    &::after {
+        border-top: 6rem solid #fff;
+        border-left: 3rem solid transparent;
+        border-right: 3rem solid transparent;
+        z-index: 10;
+    }
 
     &__title {
-        width: 80%;
-        height: 3em;
+        width: 90%;
+        height: 11rem;
         margin: 0 auto 2rem;
-        line-height: 3;
-        background-color: $orange;
-        color: #fff;
-        border-radius: 7px;
+        color: $black;
+        font-size: 3.3em;
+        letter-spacing: 0.1em;
+        // border-bottom: 3rem solid $yellow;
+        background: linear-gradient(transparent 75%, $yellow 75%);
+    }
+
+    &__title-large {
+        font-size: 4.4rem;
+    }
+
+    &__title-q {
+        font-size: 8rem;
+        letter-spacing: -.4rem;
     }
 
     &__lists {
         margin: 0 auto;
-        width: 60%;
+        width: 100%;
+        margin-bottom: 5rem;
     }
 
     &__list {
         text-align: left;
+        font-size: 1.8rem;
+        text-indent: 20%;
         padding: 1rem 0.5rem;
 
         &::before {
@@ -157,28 +200,114 @@ ul {
             vertical-align: middle;
         }
     }
+
+    &__list-large {
+        font-weight: bold;
+    }
 }
 
+
+
 // ------------SERVICE---------------
+
+
+
 .service {
     width: 100%;
     text-align: center;
+    margin: 0 auto 11rem;
 
     &__title {
-        width: 80%;
-        height: 3em;
-        margin: 0 auto 4rem;
-        line-height: 3;
-        background-color: $orange;
-        color: #fff;
-        border-radius: 7px;
+        position: relative;
+        padding: 0 3rem;
+        width: 90%;
+        height: 11rem;
+        margin: 0 0 8rem;
+        color: $black;
+        font-size: 3.2em;
+        letter-spacing: 0.3rem;
+        // border-bottom: 3rem solid $yellow;
+        background: linear-gradient(transparent 75%, $yellow 75%);
+
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            top: 60%;
+            display: inline-block;
+            width: 6rem;
+            height: 5px;
+            background-color: $orange;
+        }
+        &::before {
+          left: -1%;
+          transform: rotate(60deg);
+          transform: rotate(60deg);
+        }
+        &::after {
+          right: 2%;
+            transform: rotate(-60deg);
+            transform: rotate(-60deg);
+        }
+    }
+
+    &__title-large {
+        font-size: 4.4rem;
+    }
+
+    &__title-q {
+        font-size: 8.5rem;
+        letter-spacing: -0.5rem;
+    }
+
+    &__title-dot {
+        position: relative;
+        padding-top: 0.2rem;
+
+        &::before {
+            position: absolute;
+            content: "";
+            width: 0.2em;
+            height: 0.2em;
+            border-radius: 50%;
+            background-color: $orange;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+    }
+    &__topics {
+      width: 75%;
+      margin: 0 auto 5rem;
+    }
+    &__topic {
+      margin: 0 auto 4.5rem;
+      font-size: 1.8rem;
+    }
+    &__topic-middle {
+      font-size: 2.8rem;
+      letter-spacing: 1rem;
+    }
+    &__topic-large {
+      font-size: 3.7rem;
+      border-bottom: 5px solid $orange;
+      letter-spacing: 1rem;
+    }
+    &__text {
+      font-size: 1.5rem;
+      text-align: left;
+
+    }
+    &__text-large {
+      font-weight: bold;
+      color: #FF7676;
     }
 
     &__contents {
-      display: inline-block;
-      font-size: 1.5rem;
-      font-weight: normal;
-      border-bottom: 4px solid $orange;
+        display: inline-block;
+        font-size: 2.2rem;
+        font-weight: bold;
+        letter-spacing: .8rem;
+        border-bottom: 4px solid $yellow;
     }
 
     &__content {
@@ -192,12 +321,11 @@ ul {
 
     .card {
         background: $lightOrange;
-        border: 3px solid $orange;
-        border-radius: 10px;
+        border: 2px solid $black;
+        border-radius: 5px;
         display: inline-block;
         height: 300px;
         margin: 1rem;
-        padding-top: 20px;
         position: relative;
         width: 300px;
         box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
@@ -223,18 +351,20 @@ ul {
             }
         }
     }
-
+}
     .btn-square {
         display: inline-block;
-        width: 40%;
+        width: 50%;
         padding: 1em 1em;
         font-weight: bold;
         text-decoration: none;
+        font-size: 1.5rem;
         letter-spacing: .3em;
-        background-color: $yellow;
-        color: $black;
+        background-color: $orange;
+        color: #fff;
         border-bottom: solid 4px lighten($orange, 15%);
         border-radius: 3px;
+        text-align: center;
 
 
         &:active {
@@ -242,6 +372,117 @@ ul {
             transform: translateY(4px);
             border-bottom: none;
         }
-    }
 }
 
+// ---------------BANNER-----------------
+.banner {
+  width: 100%;
+  height: 22rem;
+  background-color: $gray;
+  position: relative;
+
+  &::before{
+    position: absolute;
+    content: "";
+    top: -9.3rem;
+    left: 7rem;
+    width: 8.6rem;
+    height: 9.3rem;
+    background-image: url(../images/logo_mini.png);
+  }
+  &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        margin: auto;
+        bottom: -4rem;
+        border-top: 5rem solid $gray;
+        border-left: 7rem solid transparent;
+        border-right: 7rem solid transparent;
+
+  }
+  &__title{
+    padding-top: 56px;
+  }
+  &__tel {
+    color: $orange;
+    font-size: 3.5rem;
+    font-weight: bold;
+    position: absolute;
+    left: 23rem;
+    bottom: .2rem;
+
+    &::before {
+      content: "";
+      top: 0;
+      left: 0;
+
+    }
+  }
+  &__tel-small {
+    font-size: 1.5rem;
+  }
+
+  &__btn {
+    width: 35rem;
+    padding: 0.5rem;
+    position: absolute;
+    right: 13rem;
+    bottom: 1.5rem;
+    z-index: 10;
+  }
+}
+
+
+
+// --------------FLOW OF USE--------------------
+
+
+
+.flowofuse {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: $lightGray;
+
+  &__title {
+        font-size: 2.2rem;
+        font-weight: bold;
+        letter-spacing: .8rem;
+        text-align: center;
+        position: relative;
+        display: inline-block;
+        margin-top: 10rem;
+        margin-bottom: 5rem;
+
+
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            top: 40%;
+            display: inline-block;
+            width: 3.5rem;
+            height: 4px;
+            background-color: $gray;
+        }
+        &::before {
+          left: -18%;
+          transform: rotate(60deg);
+          transform: rotate(60deg);
+        }
+        &::after {
+          right: -15%;
+            transform: rotate(-60deg);
+            transform: rotate(-60deg);
+        }
+  }
+
+
+
+
+
+
+}
