@@ -20,6 +20,10 @@ body {
     color: $black;
 }
 
+a {
+    text-decoration: none;
+}
+
 ul {
     margin: 0;
     padding: 0;
@@ -392,7 +396,39 @@ ul {
     height: 9.3rem;
     background-image: url(../images/logo_mini.png);
   }
-  &::after {
+  &__title{
+      padding-top: 56px;
+    }
+    &__tel {
+        color: $orange;
+        font-size: 3.5rem;
+        font-weight: bold;
+        position: absolute;
+        left: 15rem;
+        bottom: .2rem;
+        
+        &::before {
+            content: "";
+            top: 0;
+            left: 0;
+            
+        }
+    }
+    &__tel-small {
+        font-size: 1.5rem;
+    }
+    
+    &__btn {
+        width: 35rem;
+        padding: 0.5rem;
+        position: absolute;
+        right: 11rem;
+        bottom: 1.5rem;
+        z-index: 10;
+    }
+}
+.bubble {
+    &::after {
         content: "";
         position: absolute;
         right: 0;
@@ -405,40 +441,8 @@ ul {
         border-left: 7rem solid transparent;
         border-right: 7rem solid transparent;
         z-index: 10;
-  }
-  &__title{
-    padding-top: 56px;
-  }
-  &__tel {
-    color: $orange;
-    font-size: 3.5rem;
-    font-weight: bold;
-    position: absolute;
-    left: 15rem;
-    bottom: .2rem;
-
-    &::before {
-      content: "";
-      top: 0;
-      left: 0;
-
-    }
-  }
-  &__tel-small {
-    font-size: 1.5rem;
-  }
-
-  &__btn {
-    width: 35rem;
-    padding: 0.5rem;
-    position: absolute;
-    right: 11rem;
-    bottom: 1.5rem;
-    z-index: 10;
-  }
+    }   
 }
-
-
 
 // --------------FLOW OF USE--------------------
 
@@ -446,7 +450,7 @@ ul {
 
 .flowofuse {
   width: 100%;
-  margin: 0 auto;
+  margin: 0 auto 15rem;
   padding-bottom: 8rem;
   text-align: center;
   background-color: $lightGray;
@@ -584,10 +588,87 @@ ul {
         bottom: -5%;
         z-index: 3;
     }
-   
+}
 
 
 
 
+
+// --------------------FAQ------------------------
+
+
+
+.faq {
+    background-image: url(../images/faq/faq-back.png);
+    background-size: contain;
+    text-align: center;
+    margin-bottom: 10rem;
+
+
+    &__title {
+        font-size: 2.2rem;
+        font-weight: bold;
+        letter-spacing: 1rem;
+        border-bottom: 2px dotted $orange;
+        display: inline-block;
+        margin: 7rem auto;
+    }
+    &__icon {
+        color: $orange;
+    }
+    &__box {
+        width: 100%;
+        background-image: url(../images/faq/faq-box.jpg);
+        background-size: cover;
+        border-right: 1px solid $black;
+        margin-bottom: 5rem;
+        text-align: left;
+
+        &-q {
+            width: 70%;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            padding: 3rem 0 4rem 9rem;
+            
+        }
+        &-a {
+            font-size: 1.8rem;
+            padding: 3rem 0 4rem 6rem;
+
+        }
+    }
+
+}
+
+
+
+// ------------------FOOTER--------------------
+
+
+
+.gl-footer {
+    background-color: $yellow;
+    text-align: center;
+    border-bottom: 1rem solid $orange;
+
+    &__nav {
+        width: 50%;
+        margin: 0 auto;
+        padding: 3rem 0 1rem;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__nav-list {
+        
+        a {
+            color: $black;
+            padding: 1rem;
+
+            &:hover {
+                color: #ffffff;
+            }
+        }
+    }
 
 }

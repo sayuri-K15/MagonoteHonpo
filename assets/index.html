@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body id="home">
     <header class="gl-header">
         <div class="container">
             <div class="gl-header__util-nav">お見積り・ご相談の方はこちら<br><span class="gl-header__util-nav__tel">TEL: 070-5463-7362</span></div>
             <h1 class="gl-header__logo"><a href="index.html"><img src="images/logo.png" alt="孫の手本舗" class="gl-header__logo-img"></a></h1>
             <nav class="gl-nav">
                 <ul class="gl-nav__items">
-                    <li class="gl-nav__item"><a href="#" class="gl-nav__item-link">ホーム</a></li>
+                    <li class="gl-nav__item"><a href="#home" class="gl-nav__item-link">ホーム</a></li>
                     <li class="gl-nav__item"><a href="#service" class="gl-nav__item-link">サービス内容</a></li>
                     <li class="gl-nav__item"><a href="#flowofuse" class="gl-nav__item-link">ご利用の流れ</a></li>
                     <li class="gl-nav__item"><a href="#faq" class="gl-nav__item-link">よくある質問</a></li>
@@ -110,8 +110,9 @@
             </div>
         </div>
         <a href="#faq" class="btn-square">お問い合わせはこちら</a>
+        
     </section>
-    <aside class="banner">
+    <aside class="banner bubble">
         <img src="images/banner_title.png" alt="孫の手本舗はお客様の便利を追求したサービスを提供していきます" class="banner__title">
         <span class="banner__tel"><span class="banner__tel-small">TEl:070-</span>5463-7362</span>
         <a href="#faq" class="btn-square banner__btn">お問い合わせはこちら</a>
@@ -147,16 +148,45 @@
             </div>
             <a href="#faq" class="btn-square flowofuse__btn">お問い合わせはこちら</a>
         </section>
-        <section id="faq"></section>
-        <div></div>
-        <div></div>
-        <footer class="gl-footer">
-            <ul class="footer_nav">
-            <li><a href="#">ホーム</a></li>
-            <li><a href="#">サービス内容</a></li>
-            <li><a href="#">ご利用の流れ</a></li>
-            <li><a href="#">よくある質問</a></li>
-            <li><a href="#">お問い合わせ</a></li>
+        <section id="faq" class="faq">
+            <div class="container">
+                <h3 class="faq__title">
+                        <i class="fa fa-question-circle-o faq__icon" aria-hidden="true"></i>
+                    よくあるご質問</h3>
+                <dl class="faq__box">
+                    <dt class="faq__box-q">土日祝日は料金は変わりますか？</dt>
+                    <dd class="faq__box-a">365日、料金は変わりませんので、お気軽にお問い合わせ下さい。 </dd>
+                </dl>
+                <dl class="faq__box">
+                    <dt class="faq__box-q">急ぎの依頼でも対応してもらえますか？
+                    </dt>
+                    <dd class="faq__box-a">緊急のご依頼でも対応致しますので、いつでもお問い合わせ下さい。 </dd>
+                </dl>
+                <dl class="faq__box">
+                    <dt class="faq__box-q">夜間や早朝でも対応してもらえますか？ </dt>
+                    <dd class="faq__box-a">24時間対応しておりますので、お電話、またはメールにてお問い合わせ下さい。 </dd>
+                </dl>
+                <dl class="faq__box">
+                    <dt class="faq__box-q">当日、作業に立ち会えない場合でもお願い出来ますか？ </dt>
+                    <dd class="faq__box-a">可能です。作業終了後に細かい報告書や、必要に応じ写真をお送り致しますので、
+                        安心してご依頼下さい。
+                    </dd>
+                </dl>
+            </div>
+            <a href="#faq" class="btn-square">お見積もり・ご相談はこちら</a>
+        </section>
+        <aside class="banner">
+                <img src="images/banner_title.png" alt="孫の手本舗はお客様の便利を追求したサービスを提供していきます" class="banner__title">
+                <span class="banner__tel"><span class="banner__tel-small">TEl:070-</span>5463-7362</span>
+                <a href="#faq" class="btn-square banner__btn">お問い合わせはこちら</a>
+        </aside>
+     <footer class="gl-footer">
+        <ul class="gl-footer__nav">
+            <li class="gl-footer__nav-list"><a href="#home">ホーム</a></li>
+            <li class="gl-footer__nav-list"><a href="#service">サービス内容</a></li>
+            <li class="gl-footer__nav-list"><a href="#flowtouse">ご利用の流れ</a></li>
+            <li class="gl-footer__nav-list"><a href="#faq">よくある質問</a></li>
+            <li class="gl-footer__nav-list"><a href="#contact">お問い合わせ</a></li>
         </ul>
         <small>Copyright© 2020 All rights reserved.</small>
     </footer>
