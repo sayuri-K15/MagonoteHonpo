@@ -1,0 +1,507 @@
+//Text
+$base__font-size: 16px;
+
+$font-family--montserrat: 'Montserrat', sans-serif;
+$font-family--primary : $font-family--montserrat;
+
+//Colors
+$white: #fff;
+$gray: #99A4AE;
+$green: #86D8C9;
+$orange: #FFB033;
+$lightOrange: #FEBF31;
+$yellow: #F2F20D;
+$blue: #0B83FA;
+$lightGray: #EAEAEA;
+$gray: #707070;
+$black: #383838;
+
+//Color Palette
+$palettes: (
+  gray-shades: (
+    darker: #9FAAB7,
+    base: #99A4AE,
+    light: #DCDCE3,
+    lighter: #BEC1CA,
+    lightest: #F2F6F8
+  )
+);
+
+// Color usages
+$main-background-color: #F8FAFA;
+$calendar-item-border: #FEFEFE;
+$calendar-item-text: #424588;
+$calendar-button-color:  #E9E8E8;
+
+//Font size variables
+$lg-font-size: 20px;
+$default-font-size: 14px;
+$sm-font-size: 12px;
+$xsm-font-size: 10px;
+
+//Font weight variables
+$font-weight--bold: 700;
+$font-weight--semi-bold: 600;
+$font-weight--regular: 400;
+
+//Color Usage
+$primary-color: $orange;
+
+@function palette($palette, $shade: base){
+  @return map-get(map-get($palettes, $palette), $shade);
+}
+// Retrieved from https://github.com/sshikhrakar/Sass-Starter/
+// BEM(Block Element Modifier) Naming Convention
+// For Element
+// $element  - Just the element name for the parent block (doesn't require the parent Block name)
+// @usage    - `.Nav {@include e(item){...}}`
+@mixin e($element){
+  &__#{$element}{
+    @content;
+  }
+}
+
+// For Modifier
+// $modifier  - Just the modifier name for the parent block or element
+// @usage     - `.Nav {@include e(item) {@include m(active) {...}}}`
+@mixin m($modifier){
+  &--#{$modifier}{
+    @content;
+  }
+}
+
+// Media Query
+@mixin mq($break){
+    @if type-of($break) == 'number' {
+      @media(min-width: $break + 'px') {
+        @content;
+      }
+    }
+    @else {
+      @error "No value could be retrieved for '#{$break}'";
+    }
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Base Code
+html, body{
+  height: 100%;
+}
+body{
+  -webkit-font-smoothing: antialiased;
+  font-family: $font-family--primary;
+  text-rendering: optimizeLegibility;
+  background: #fcfcfc;
+}
+a {
+  text-decoration: none;
+}
+
+.mock-up-link {
+  display: none;
+  
+  @include mq(768) {
+    display: block;
+  }
+}
+
+.main-container-wrapper {
+  background-color: $main-background-color;
+  min-width: 320px;
+  min-height: 568px;
+  max-width: 414px;
+  overflow-y: auto;
+
+  @include mq(415) {
+    box-shadow: 0px 32px 47px rgba(32, 23, 23, 0.09);
+    margin: 24px;
+    float: left;
+  }
+}
+
+header {
+  background-color: $white;
+  display: flex;
+  height: 58px;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+}
+
+.header {
+  @include e(btn) {
+    background-color: $primary-color;
+    border: 2px solid $white;
+    border-radius: 50%;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    height: 80px;
+    padding-top: 18px;
+    position: absolute;
+    top: -25px;
+    width: 80px;
+    
+    &:hover,
+    &:focus {
+      background: darken($orange, 8%);
+      transition: all 0.3s ease-in;
+      outline: none;
+    }
+
+    .icon {
+      display: inline-block;
+    }
+
+    @include m(left) {
+      left: -25px;
+      padding-left: 38px;
+      text-align: left;
+    }
+
+    @include m(right) {
+      padding-right: 32px;
+      right: -25px;
+      text-align: right;
+    }
+  }
+}
+
+.calendar-container {
+  background-color: $white;
+  padding: 16px;
+  margin-bottom: 24px;
+
+  @include e(header) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include e(btn) {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 16px;
+    outline: none;
+    color: $calendar-button-color;
+
+    &:hover,
+    &:focus {
+      color: palette(gray-shades, darker);
+      transition: all 0.3s ease-in;
+    }
+  }
+
+  @include e(title) {
+    color: $black;
+    font-size: $lg-font-size;
+    font-weight: $font-weight--bold;
+  }
+}
+
+.calendar-table {
+  margin-top: 12px;
+  width: 100%;
+
+  @include e(item) {
+    border: 2px solid transparent;
+    border-radius: 5px;
+    color: $calendar-item-text;
+    font-size: $sm-font-size;
+    font-weight: $font-weight--bold;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+    &:hover {
+      background: #f8fafa;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+      transition: 0.2s all ease-in;
+    }
+  }
+
+  @include e(row) {
+    display: flex;
+    justify-content: center;
+  }
+
+  @include e(header) {
+    border-bottom: 2px solid palette(gray-shades, lightest);
+    margin-bottom: 4px;
+
+    .calendar-table__col {
+      display: inline-block;
+      color: $gray;
+      font-size: $sm-font-size;
+      font-weight: $font-weight--bold;
+      padding: 12px 3px;
+      text-align: center;
+      text-transform: uppercase;
+      width: 40px;
+      height: 38px;
+
+      @include mq(360) {
+        width: 46px;
+      }
+
+      @include mq(410) {
+        width: 54px;
+      }
+    }
+  }
+
+  @include e(body) {
+    .calendar-table__col {
+      width: 40px;
+      height: 42px;
+      padding-bottom: 2px;
+
+      @include mq(360) {
+        width: 46px;
+        height: 48px;
+      }
+
+      @include mq(410) {
+        width: 54px;
+        height: 56px;
+      }
+    }
+  }
+
+  @include e(today) {
+    .calendar-table__item {
+      border-color: $calendar-item-border;
+      background-color: palette(gray-shades, lightest);
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  @include e(event)  {    
+    .calendar-table__item {
+      background-color: $green;
+      border-color: $calendar-item-border;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+      color: $white;
+    }
+
+    @include m(long) {
+      overflow-x: hidden;
+      
+      .calendar-table__item {
+        border-radius: 0;
+        border-width: 2px 0;
+      }
+    }
+
+    @include m(start) {
+      .calendar-table__item {
+        border-left: 2px solid $white;
+        border-radius: 50% 0 0 50%;
+      }
+
+      &.calendar-table__col:last-child {
+        .calendar-table__item {
+          border-width: 2px;
+        }
+      }
+    }
+
+    @include m(end) {
+      .calendar-table__item {
+        border-right: 2px solid $white;
+        border-radius: 0 50% 50% 0;
+      }
+
+      &.calendar-table__col:first-child {
+        .calendar-table__item {
+          border-width: 2px;
+        }
+      }
+    }
+  }
+
+  @include e(inactive) {
+    .calendar-table__item {
+      color: palette(gray-shades, light);
+      cursor: default;
+      
+      &:hover {
+        background: transparent;
+        box-shadow: none;
+      }
+    }
+  
+    &.calendar-table__event {
+      .calendar-table__item {
+        color: $white;
+        opacity: 0.25;
+        
+        &:hover {
+          background: $blue;
+          -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+          -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+}
+
+.events-container {
+  padding: 0 15px;
+}
+
+.events {
+  @include e(title) {
+    color: $black;
+    display: inline-block;
+    font-size: $default-font-size;
+    font-weight: $font-weight--semi-bold;
+    margin-bottom: 16px;
+  }
+
+  @include e(tag) {
+    background: $green;
+    border: 2px solid $calendar-item-border;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    color: $white;
+    font-size: $xsm-font-size;
+    font-weight: $font-weight--semi-bold;
+    width: 60px;
+    margin-left: 16px;
+    padding: 5px 2px;
+    text-align: center;
+
+    @include m(highlighted) {
+      background: $yellow;
+    }
+  }
+
+  @include e(item) {
+    background: $white;
+    border-left: 8px solid $orange;
+    border-radius: 2px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05);
+    padding: 15px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    @include m(left) {
+      width: calc(100% - 76px);
+    }
+  }
+
+  @include e(name) {
+    font-size: $sm-font-size;
+    font-weight: $font-weight--bold;
+    color: $black;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  @include e(date) {
+    font-size: $sm-font-size;
+    color: palette(gray-shades, darker);
+    display: inline-block;
+  }
+}
+
+.contact {
+  width: 60%;
+  margin: .5rem 2.5rem  0;
+  padding-bottom: 8rem;
+  float: right;
+
+  &__center {
+      text-align: center;
+  }
+
+  &__title {
+      font-size: 2.2rem;
+      font-weight: bold;
+      text-align: center;
+      letter-spacing: .4rem;
+      border-bottom: 2px dotted $orange;
+      display: inline-block;
+      margin: 3rem auto;
+
+      .fa {
+          color: $orange;
+      }
+  }
+  &__form {
+      width: 60%;
+      margin: 0 auto;
+
+      &-item {
+          width: 100%;
+
+          &__title {
+              font-size: 1.1rem;
+              font-weight: bold;
+              margin-bottom: .5rem;
+
+          }
+          &__title-r {
+              color: $orange;
+              font-size: 1rem;
+          }
+          &__body {
+              width: 100%;
+              margin: 0 0 4rem;
+          }    
+      }
+  }
+  .checkbox {
+    font-size: 1rem;
+    margin-top: 1rem;
+
+    input{
+      margin-left: 1.2rem;
+    }
+  }
+  &__form-box{
+      width: 100%;
+      height: 50px;
+      padding-left: 1.5rem;
+      border-width: 0;
+      border-radius: 3px;
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05);
+  }
+  &__form-boxarea {
+      width: 100%;
+      height: 100px;
+      padding-left: 1.5rem;
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05);
+  }
+  &__form-submit {
+      
+      &__link {
+        background-color: #fff;
+        color: $orange;
+        padding: .8rem 1.5rem;
+        margin-right: 1.5rem;
+        border: 1px solid $orange;
+        border-radius: 8px;
+        
+      }
+      &__btn {
+        background-color: $orange;
+        padding: .8rem 1.5rem;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: bold;
+      }
+  }
+}
+
