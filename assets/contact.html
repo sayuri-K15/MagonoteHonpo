@@ -12,8 +12,25 @@
   <link rel="stylesheet" href="css/contact.css">
 </head>
 <body>
+    <header class="gl-header">
+            <div class="gl-header__util-nav">お見積り・ご相談の方はこちら<br><span class="gl-header__util-nav__tel">TEL:
+                    070-5463-7362</span></div>
+            <h1 class="gl-header__logo"><a href="index.html"><img src="images/logo.png" alt="孫の手本舗" width="200" height="200" class="gl-header__logo-img"></a>
+            </h1>
+            <nav class="gl-nav">
+              <div class="container">
+                <ul class="gl-nav__items">
+                  <li class="gl-nav__item"><a href="index.html" class="gl-nav__item-link">ホーム</a></li>
+                  <li class="gl-nav__item"><a href="#service" class="gl-nav__item-link">サービス内容</a></li>
+                  <li class="gl-nav__item"><a href="#flowofuse" class="gl-nav__item-link">ご利用の流れ</a></li>
+                  <li class="gl-nav__item"><a href="#faq" class="gl-nav__item-link">よくある質問</a></li>
+                  <li class="gl-nav__item"><a href="contact.html" class="gl-nav__item-link">お問い合わせ</a></li>
+                </ul>
+              </div>
+            </nav>
+    </header>
   <div class="main-container-wrapper">
-    <header>
+    <div class="header">
       <button class="header__btn header__btn--left" title="Menu">
         <svg class="icon" width="20px" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill="#fff" d="M0 0h20v2H0zM0 7h20v2H0zM0 14h20v2H0z"/>
@@ -24,7 +41,7 @@
           <path fill="#fff" d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z"/>
         </svg>
       </button>
-    </header>
+    </div>
     <main>
       <div class="calendar-container">
         <div class="calendar-container__header">
@@ -276,8 +293,13 @@
   <div id="contact" class="contact">
       <div class="contact__center">
           <h3 class="contact__title">
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <i class="fa fa-envelope-o" aria-hidden="true"></i>
               お問い合わせ</h3>
+          <p>
+              お気軽にお問い合わせください。
+
+              ※の表示がある項目につきましては必ず入力くださいますよう、お願い致します。
+          </p>
       </div>
       <form action="" class="contact__form">
           <dl class="contact__form-item">
@@ -315,11 +337,15 @@
                   <textarea name="content" class="contact__form-boxarea"></textarea>
               </dd>
           </dl>
+          <small>
+              当サイトより取得した個人情報は適切に管理いたします。
+              個人情報保護法に定める例外事項を除き、本人の同意を得ることなく第三者に提供、開示しません。
+          </small>
           <div class="contact__center">
-          <div class="contact__form-submit">
+            <div class="contact__form-submit">
               <a href="index.html" class="contact__form-submit__link">ホームへ戻る</a>
               <inpiut type="submit" class="contact__form-submit__btn" value="送信">入力内容を確認する
-          </div>
+            </div>
           </div>
       </form>
   </div>

@@ -5,8 +5,9 @@ $orange: #FFB033;
 $lightOrange: #FEF6E0;
 $yellow: #F2F20D;
 $blue: #0B83FA;
-$lightGray:#E8EDEC;
+$lightGray:#f4f4f4;
 $gray: #99A4AE;
+$darkGray: #545158;
 $black: #383838;
 $green: #86D8C9;
 
@@ -18,6 +19,7 @@ body {
     width: 100%;
     height: 100%;
     color: $black;
+    margin: 0 auto;
 }
 
 a {
@@ -34,7 +36,7 @@ ul {
 }
 
 .container {
-    width: 1600px;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -52,7 +54,7 @@ ul {
 .gl-header {
     width: 100%;
     position: relative;
-    border-top: 1rem solid $orange;
+    border-top: .8rem solid $orange;
 
     &__util-nav {
         position: absolute;
@@ -79,6 +81,18 @@ ul {
 
 .gl-nav {
     width: 100%;
+    background-color: #fff;
+    padding-bottom: 1rem;
+    transition: .5s ease-in;
+    
+    &.transform {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        padding-bottom: 1rem;
+        box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.1);
+    }
 
     &__items {
         display: flex;
@@ -86,30 +100,33 @@ ul {
     }
 
     &__item {
-        margin-top: 20px;
+        margin-top: 15px;
         width: 15%;
         padding-left: 2em;
         border-left: 2px dotted $orange;
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
 
         &:nth-of-type(1) {
-            background: url(../images/nav/nav01.jpg) center center / contain no-repeat;
+            background-image: url(../images/nav/nav01.jpg);
             border-left: none;
         }
 
         &:nth-of-type(2) {
-            background: url(../images/nav/nav02.jpg) center center / contain no-repeat;
+            background-image: url(../images/nav/nav02.jpg);
         }
 
         &:nth-of-type(3) {
-            background: url(../images/nav/nav03.jpg) center center / contain no-repeat;
+            background-image: url(../images/nav/nav03.jpg);
         }
 
         &:nth-of-type(4) {
-            background: url(../images/nav/nav04.jpg) center center / contain no-repeat;
+            background-image: url(../images/nav/nav04.jpg);
         }
 
         &:nth-of-type(5) {
-            background: url(../images/nav/nav05.jpg) center center / contain no-repeat;
+            background-image: url(../images/nav/nav05.jpg);
         }
     }
 
@@ -129,7 +146,7 @@ ul {
 
 /*---------HERO-----------------*/
 .hero {
-    margin-bottom: 3rem;
+    margin-bottom: 6rem;
 
     &__title {
         width: 100%;
@@ -149,12 +166,12 @@ ul {
 
 
 .purpose {
-    width: 75%;
+    width: 100%;
     border: solid 3px $black;
     text-align: center;
     margin: 0 auto 10rem;
     background-color: $lightGray;
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 19px 30px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
     position: relative;
 
     &::before,
@@ -189,7 +206,7 @@ ul {
         color: $black;
         font-size: 2.6em;
         letter-spacing: 0.1em;
-        background: linear-gradient(transparent 75%, $yellow 75%);
+        background: linear-gradient(transparent 80%, $yellow 80%);
     }
 
     &__title-large {
@@ -209,18 +226,15 @@ ul {
 
     &__list {
         text-align: left;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         text-indent: 20%;
-        padding: 1rem 0.5rem;
+        padding: .8rem 0.5rem;
 
         .fa {
             color: $orange;
         }
     }
 
-    &__list-large {
-        font-weight: bold;
-    }
 }
 
 
@@ -236,20 +250,19 @@ ul {
 
     &__title {
         position: relative;
-        padding: 0 3rem;
-        width: 90%;
-        height: 11rem;
-        margin: 0 0 8rem;
-        color: $black;
-        font-size: 2.8em;
-        letter-spacing: 0.3rem;
+        width: 100%;
+        height: 8/5rem;
+        margin: 0 0 4rem;
+        color: #fff;
+        font-size: 2.2em;
         // border-bottom: 3rem solid $yellow;
-        background: linear-gradient(transparent 75%, $yellow 75%); box-shadow: 0px 5px 2px rgba(0, 0, 0, 0.1);
+        background-color: $darkGray; 
+        // linear-gradient(transparent 50%, $yellow 50%); box-shadow: 0px 5px 2px rgba(0, 0, 0, 0.1);
 
         &::before, &::after {
             content: '';
             position: absolute;
-            top: 60%;
+            top: 40%;
             display: inline-block;
             width: 6rem;
             height: 5px;
@@ -269,10 +282,11 @@ ul {
 
     &__title-large {
         font-size: 4.4rem;
+        letter-spacing: .3rem;
     }
 
     &__title-q {
-        font-size: 8rem;
+        font-size: 6rem;
         letter-spacing: -0.5rem;
     }
 
@@ -293,14 +307,15 @@ ul {
         }
     }
     &__topics {
-      width: 90%;
-      margin: 0 auto 15rem;
+      width: 100%;
+      margin: 0 auto 10rem;
       background-color: $green;
-      padding: 7rem 7rem;
+      padding: 4rem 0 5rem;
       
       &-box {
           background-color: #fff;
           padding: 2rem;
+          margin: 0 3rem;
           box-shadow: 3px 5px 15px $black;
       }
     }
@@ -310,31 +325,34 @@ ul {
     }
     &__topic-middle {
       font-size: 2.4rem;
-      letter-spacing: 1rem;
+      letter-spacing: .8rem;
     }
     &__topic-large {
       font-size: 3.7rem;
-      border-bottom: 5px solid $orange;
+      border-bottom: 3px solid $orange;
       letter-spacing: 1rem;
     }
     &__text {
       font-size: 1.2rem;
       text-align: left;
       line-height: 2;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.1em;
 
     }
     &__text-large {
+      font-size: 1.3rem;
       font-weight: bold;
-      color: $orange;
+      background: linear-gradient(transparent 50%, $yellow 50%)
     }
 
     &__contents {
         display: inline-block;
         font-size: 2.2rem;
         font-weight: bold;
-        letter-spacing: .8rem;
+        letter-spacing: .6rem;
+        border-top: 4px solid $yellow;
         border-bottom: 4px solid $yellow;
+
     }
 
     &__content {
@@ -379,6 +397,10 @@ ul {
         }
     }
 }
+
+
+
+
     .btn-square {
         display: inline-block;
         width: 30%;
@@ -387,13 +409,13 @@ ul {
         font-weight: bold;
         text-decoration: none;
         font-size: 1.5rem;
-        letter-spacing: .3em;
+        letter-spacing: .2em;
         background-color: $orange;
         color: #fff;
         border-bottom: solid 4px lighten($orange, 15%);
         border-radius: 8px;
         text-align: center;
-        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.1);
 
 
         &:active {
@@ -406,8 +428,8 @@ ul {
 // ---------------BANNER-----------------
 .banner {
   width: 100%;
-  height: 22rem;
-  background-color: $gray;
+  height: 20rem;
+  background-color: $darkGray;
   position: relative;
   
   &::before{
@@ -430,20 +452,14 @@ ul {
         left: 15rem;
         bottom: .2rem;
         
-        &::before {
-            content: "";
-            top: 0;
-            left: 0;
-            
-        }
     }
     &__tel-small {
         font-size: 1.5rem;
     }
     
     &__btn {
-        width: 35rem;
-        padding: 0.5rem;
+        width: 35%;
+        padding: 0.3rem;
         position: absolute;
         right: 11rem;
         bottom: 1.5rem;
@@ -460,7 +476,7 @@ ul {
         height: 0;
         margin: auto;
         bottom: -4rem;
-        border-top: 5rem solid $gray;
+        border-top: 5rem solid $darkGray;
         border-left: 7rem solid transparent;
         border-right: 7rem solid transparent;
         z-index: 10;
@@ -473,16 +489,16 @@ ul {
 
 .flowofuse {
   width: 100%;
-  margin: 0 auto 15rem;
+  margin: 0 auto 10rem;
   padding-bottom: 8rem;
   text-align: center;
-  background-color: $lightGray;
+  background-color: #F4F4F4;
   position: relative;
 
   &__title {
         font-size: 2.2rem;
         font-weight: bold;
-        letter-spacing: 1rem;
+        letter-spacing: .6rem;
         text-align: center;
         position: relative;
         display: inline-block;
@@ -495,7 +511,7 @@ ul {
             display: inline-block;
             width: 3.5rem;
             height: 4px;
-            background-color: $gray;
+            background-color: $orange;
             position: absolute;
             left: -18%;
             transform: rotate(60deg);
@@ -508,15 +524,12 @@ ul {
             display: inline-block;
             width: 3.5rem;
             height: 4px;
-            background-color: $gray;
+            background-color: $orange;
             position: absolute;
             right: -15%;
             transform: rotate(-60deg);
             transform: rotate(-60deg);
         }
-    }
-    &__title-icon {
-        color: $orange;
     }
     &__items {
         width: 75%;
@@ -542,8 +555,8 @@ ul {
             top: 19.5%;
             right: 12%;
             z-index: 2;
-            width: 145px;
-            height: 200px;
+            width: 108px;
+            height: 150px;
             
         }
         &:nth-of-type(3) {
@@ -626,42 +639,79 @@ ul {
     background-image: url(../images/faq/faq-back.png);
     background-size: cover;
     text-align: center;
-    margin-bottom: 10rem;
+    margin: 10rem 0;
 
 
     &__title {
         font-size: 2.2rem;
         font-weight: bold;
-        letter-spacing: 1rem;
-        border-bottom: 2px dotted $orange;
+        letter-spacing: .6rem;
+        border-top: 3px dotted $orange;
+        border-bottom: 3px dotted $orange;
         display: inline-block;
-        margin: 7rem auto;
-    }
-    &__icon {
-        color: $orange;
+        margin: 5rem auto;
     }
     &__box {
         width: 75%;
-        background-image: url(../images/faq/faq-box.jpg);
-        background-size: contain;
-        background-repeat: no-repeat;
-        border: 1px solid $black;
-        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+        background-color: $green;
+        border: 2px solid $darkGray;
+        border-radius: 5px;
+        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
         margin: 5rem auto;
         text-align: left;
 
+        
+
         &-q {
-            width: 70%;
+            width: 80%;
             font-size: 1.3rem;
             font-weight: bold;
-            color: #fff;
-            padding: 1.3rem 0 1.3rem 9rem;
-            
-        }
-        &-a {
-            font-size: 1.3rem;
-            padding: 1.2rem 0 1rem 6rem;
+            color: $darkGray;
+            padding: 1.3rem 0 1.3rem 7rem;
+            position: relative;
+            display: block;
 
+            &.active::after {                      content: "\f068";
+                font-family: FontAwesome; 
+                color: #fff;
+            }
+
+            &::before {
+                position: absolute;
+                content: "Q";
+                top: 1rem;
+                left: 3rem;
+                font-size: 1.6rem;
+            }
+            &::after {
+                position: absolute;
+                font-family: FontAwesome;
+                content:"\f067";
+                top: 1.5rem;
+                right: 0;
+                cursor: pointer;
+            }
+        }                                      
+        &-a {
+            display: none;
+            font-size: 1.3rem;
+            padding: 1.2rem 2rem 1rem 7rem;
+            background-color: #fff;
+            position: relative;
+
+            &::before {
+                position: absolute;
+                content: "A";
+                top: 1rem;
+                left: 3rem;
+                font-size: 1.6rem;
+                color: darken($green, 40%);
+            }
+
+        }
+
+        &:last-of-type {
+            margin-bottom: 8rem;
         }
     }
 
@@ -679,7 +729,7 @@ ul {
         position: relative;
         display: block;
         text-decoration: none;
-        font-size: 3.5rem;
+        font-size: 3rem;
         color: $orange;
     }
 
