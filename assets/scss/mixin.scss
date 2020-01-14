@@ -31,6 +31,18 @@
     text-align: center;
     box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.1);
 
+
+
+    &::before {
+        content: "\f061";
+        font-family: FontAwesome;
+        color: #fff;
+    }
+    &::after {
+        content: "\f0e0";
+        font-family: FontAwesome;
+        color: #fff;
+    }
     &:active {
             transform: translateY(4px);
             transform: translateY(4px);
