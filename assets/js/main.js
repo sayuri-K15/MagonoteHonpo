@@ -18,7 +18,7 @@ jQuery(function() {
   })
 
 
-  
+
   // ------------トップへ戻るボタン------------
   var appear = false;
   var pagetop = $('#page_top');
@@ -44,8 +44,14 @@ jQuery(function() {
     $('body, html').animate({ scrollTop: 0 }, 700); //0.5秒かけてトップへ戻る
     return false;
   });
-  
 
+  //------------SERVICE---------------
+   $('.card-title h2').click(function(){
+
+    $(this).children().slideToggle();
+    $(this).toggleClass('active');
+
+  });
 
   //------------FAQ アコーディオン-------------
   $('.faq__box-q').click(function(){
@@ -54,6 +60,7 @@ jQuery(function() {
     $(this).toggleClass('active');
 
   });
+
 
 
 

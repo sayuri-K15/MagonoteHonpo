@@ -1,3 +1,6 @@
+@charset "UTF-8";
+@import "mixin.scss";
+
 //Text
 $base__font-size: 16px;
 
@@ -12,7 +15,7 @@ $orange: #FFB033;
 $lightOrange: #FEBF31;
 $yellow: #F2F20D;
 $blue: #0B83FA;
-$lightGray: #EAEAEA;
+$lightGray: #DEE2E1;
 $gray: #707070;
 $black: #383838;
 
@@ -93,9 +96,7 @@ html, body{
   height: 100%;
 }
 body{
-  -webkit-font-smoothing: antialiased;
   font-family: $font-family--primary;
-  text-rendering: optimizeLegibility;
   background: #fcfcfc;
 }
 a {
@@ -103,6 +104,9 @@ a {
 }
 ul {
   list-style: none;
+}
+textarea {
+  border: none;
 }
 .container {
   width: 80%;
@@ -113,6 +117,7 @@ ul {
   width: 100%;
   position: relative;
   border-top: .8rem solid $orange;
+  padding-top: 2rem;
 
   &__util-nav {
     position: absolute;
@@ -133,59 +138,6 @@ ul {
   }
 }
 
-.gl-nav {
-  width: 100%;
-  background-color: #fff;
-  &__items {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  &__item {
-    margin-top: 15px;
-    width: 15%;
-    padding-left: 2em;
-    border-left: 2px dotted $orange;
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    &:nth-of-type(1) {
-      background-image: url(../images/nav/nav01.jpg);
-      border-left: none;
-    }
-
-    &:nth-of-type(2) {
-      background-image: url(../images/nav/nav02.jpg);
-    }
-
-    &:nth-of-type(3) {
-      background-image: url(../images/nav/nav03.jpg);
-    }
-
-    &:nth-of-type(4) {
-      background-image: url(../images/nav/nav04.jpg);
-    }
-
-    &:nth-of-type(5) {
-      background-image: url(../images/nav/nav05.jpg);
-    }
-  }
-
-  &__item-link {
-    width: 100%;
-    height: 3em;
-    text-align: center;
-    display: inline-block;
-    text-indent: -9999px;
-    transition: border-color 1s linear;
-
-    &:hover {
-      border-bottom: 3px solid $orange;
-    }
-  }
-}
-
 
 
 // ------------------------------------------
@@ -194,7 +146,7 @@ ul {
 
 .mock-up-link {
   display: none;
-  
+
   @include mq(768) {
     display: block;
   }
@@ -209,18 +161,24 @@ ul {
 
   @include mq(415) {
     box-shadow: 0px 32px 47px rgba(32, 23, 23, 0.09);
-    margin: 5rem 24px;
+    margin: 5rem 3rem;
     float: left;
+  }
+
+  h3 {
+    @include underline;
+    display: inline-block;
+    margin-bottom: 2rem;
   }
 }
 
-.header {
-  background-color: $white;
-  display: flex;
-  height: 58px;
-  justify-content: space-between;
-  overflow: hidden;
-  position: relative;
+// .header {
+//   background-color: $white;
+//   display: flex;
+//   height: 58px;
+//   justify-content: space-between;
+//   overflow: hidden;
+//   position: relative;
 
 
   @include e(btn) {
@@ -234,7 +192,7 @@ ul {
     position: absolute;
     top: -25px;
     width: 80px;
-    
+
     &:hover,
     &:focus {
       background: darken($orange, 8%);
@@ -258,10 +216,11 @@ ul {
       text-align: right;
     }
   }
-}
+
 
 .calendar-container {
   background-color: $white;
+  border: 2px solid $lightGray;
   padding: 16px;
   margin-bottom: 24px;
 
@@ -283,6 +242,10 @@ ul {
       color: palette(gray-shades, darker);
       transition: all 0.3s ease-in;
     }
+  }
+
+  &__title .fa{
+    color: $orange;
   }
 
   @include e(title) {
@@ -308,7 +271,7 @@ ul {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    
+
     &:hover {
       background: #f8fafa;
       box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
@@ -373,7 +336,7 @@ ul {
     }
   }
 
-  @include e(event)  {    
+  @include e(event)  {
     .calendar-table__item {
       background-color: $green;
       border-color: $calendar-item-border;
@@ -383,7 +346,7 @@ ul {
 
     @include m(long) {
       overflow-x: hidden;
-      
+
       .calendar-table__item {
         border-radius: 0;
         border-width: 2px 0;
@@ -421,18 +384,18 @@ ul {
     .calendar-table__item {
       color: palette(gray-shades, light);
       cursor: default;
-      
+
       &:hover {
         background: transparent;
         box-shadow: none;
       }
     }
-  
+
     &.calendar-table__event {
       .calendar-table__item {
         color: $white;
         opacity: 0.25;
-        
+
         &:hover {
           background: $blue;
           box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
@@ -444,6 +407,7 @@ ul {
 
 .events-container {
   padding: 0 15px;
+  border: 2px solid $lightGray;
 }
 
 .events {
@@ -504,6 +468,16 @@ ul {
   }
 }
 
+
+
+
+
+//----------------------お問い合わせフォーム---------------
+
+
+
+
+
 .contact {
   width: 40%;
   margin: 5rem 8rem  0;
@@ -512,7 +486,8 @@ ul {
 
   &__center {
     text-align: center;
-    margin-top: 2rem;
+    line-height: 2;
+    margin: 3rem 0 ;
   }
 
   &__title {
@@ -545,12 +520,16 @@ ul {
           &__body {
               width: 100%;
               margin: 0 0 4rem;
-          }    
+              border: 2px solid $lightGray;
+              box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+          }
       }
   }
   .checkbox {
     font-size: 1rem;
     margin-top: 1rem;
+    border: none;
+    box-shadow: none;
 
     input{
       margin-left: 1.2rem;
@@ -578,7 +557,7 @@ ul {
         margin-right: 1.5rem;
         border: 1px solid $orange;
         border-radius: 8px;
-        
+
       }
       &__btn {
         background-color: $orange;
