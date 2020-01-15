@@ -13,6 +13,7 @@ $gray: #99A4AE;
 $green: #86D8C9;
 $orange: #FFB033;
 $lightOrange: #FEBF31;
+$beige: #FFF9F0;
 $yellow: #F2F20D;
 $blue: #0B83FA;
 $lightGray: #DEE2E1;
@@ -97,7 +98,7 @@ html, body{
 }
 body{
   font-family: $font-family--primary;
-  background: #fcfcfc;
+  background: $beige;
 }
 a {
   text-decoration: none;
@@ -105,8 +106,9 @@ a {
 ul {
   list-style: none;
 }
-textarea {
+input, textarea {
   border: none;
+  font-size: 1.3rem;
 }
 .container {
   width: 80%;
@@ -121,21 +123,17 @@ textarea {
 
   &__util-nav {
     position: absolute;
-    top: 0;
-    right: 30px;
-    font-size: 18px;
-    text-align: center;
-
-    &__tel {
-      color: $orange;
-      font-size: 20px;
-    }
+    top: -1rem;
+    right: 5rem;
+    width: 20%; 
   }
 
   &__logo {
     margin: 0 auto;
     text-align: center;
+    cursor: pointer;
   }
+
 }
 
 
@@ -153,15 +151,15 @@ textarea {
 }
 
 .main-container-wrapper {
-  background-color: $main-background-color;
+  background-color: $beige;
+  text-align: center;
   min-width: 320px;
   min-height: 568px;
   max-width: 414px;
   overflow-y: auto;
 
   @include mq(415) {
-    box-shadow: 0px 32px 47px rgba(32, 23, 23, 0.09);
-    margin: 5rem 10rem;
+    margin: 5rem 8rem 0 0;
     float: right;
   }
 
@@ -169,6 +167,7 @@ textarea {
     @include underline;
     display: inline-block;
     margin-bottom: 2rem;
+    font-size: 1.3rem;
   }
 }
 
@@ -222,7 +221,8 @@ textarea {
   background-color: $white;
   border: 2px solid $lightGray;
   padding: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 5rem;
+  box-shadow: 20px 32px 37px rgba(32, 23, 23, 0.09);
 
   @include e(header) {
     display: flex;
@@ -263,11 +263,12 @@ textarea {
     border: 2px solid transparent;
     border-radius: 5px;
     color: $calendar-item-text;
-    font-size: $sm-font-size;
+    font-size: 1rem;
     font-weight: $font-weight--bold;
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -406,17 +407,21 @@ textarea {
 }
 
 .events-container {
-  padding: 0 15px;
+  padding: 2rem 15px;
   border: 2px solid $lightGray;
+  background: $main-background-color;
+  box-shadow: 20px 32px 37px rgba(32, 23, 23, 0.09);
 }
 
 .events {
+  
   @include e(title) {
     color: $black;
     display: inline-block;
-    font-size: $default-font-size;
+    font-size: 1rem;
     font-weight: $font-weight--semi-bold;
     margin-bottom: 16px;
+    
   }
 
   @include e(tag) {
@@ -425,15 +430,14 @@ textarea {
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     color: $white;
-    font-size: $xsm-font-size;
-    font-weight: $font-weight--semi-bold;
-    width: 60px;
+    font-size: 1rem;
+    width: 5rem;
     margin-left: 16px;
     padding: 5px 2px;
     text-align: center;
 
     @include m(highlighted) {
-      background: $yellow;
+      background: $lightOrange;
     }
   }
 
@@ -450,6 +454,7 @@ textarea {
 
     @include m(left) {
       width: calc(100% - 76px);
+      text-align: left;
     }
   }
 
@@ -462,8 +467,8 @@ textarea {
   }
 
   @include e(date) {
-    font-size: $sm-font-size;
-    color: palette(gray-shades, darker);
+    font-size: 1.2rem;
+    color: $blue;
     display: inline-block;
   }
 }
@@ -480,14 +485,19 @@ textarea {
 
 .contact {
   width: 40%;
-  margin: 8rem 10rem;
+  margin: 8rem 0 0 6rem;
   padding-bottom: 8rem;
   float: left;
 
   &__center {
+    width: 85%;
     text-align: center;
     line-height: 2;
-    margin: 3rem 0 ;
+    margin: 8rem auto 3rem;
+
+    p {
+      letter-spacing: 0.1rem;
+    }
   }
 
   &__title {

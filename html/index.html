@@ -25,20 +25,28 @@
 
         <div class="container">
             <div class="gl-header__util-nav">
-                <img src="images/tel.png" alt="">
+                <a href="#">
+                    <img src="images/tel.png" alt="">
+                </a>
+                <a href="contact.html" class="btn-square nav_btn">
+                        ご予約の方は<br>こちら
+                </a>
             </div>
             <h1 class="gl-header__logo"><a href="index.html"><img src="images/mago_logo02.png" alt="孫の手本舗" class="gl-header__logo-img"></a>
             </h1>
-
+        </div>
 
 
 
 <!-- ------------ハンバーガーメニュー----------------->
-            <input type="checkbox" id="navTgl">
-            <label for="navTgl" class="open"><span></span></label>
-            <label for="navTgl" class="close"></label>
-            <nav class="menu">
-            </nav>
+<div class="sm-nav">
+
+    <input type="checkbox" id="navTgl">
+    <label for="navTgl" class="open"><span></span></label>
+    <label for="navTgl" class="close"></label>
+    <nav class="menu">
+    </nav>
+</div>
 <!-- ------------------------------------------------------- -->
 
 
@@ -55,7 +63,7 @@
                     <li class="gl-nav__item"><a href="contact.html" class="gl-nav__item-link">お問い合わせ</a></li>
                 </ul>
             </nav>
-        </div>
+
     </header>
 
 <div class="contents">
@@ -104,8 +112,8 @@
             <i class="fa fa-search-minus" aria-hidden="true"></i>
             サービスの内容
         </h3>
-        <p>
-            ご自宅のお掃除からお買い物の代行、そのほか些細なお困りごとでもどんなことでも私たちにご相談ください。
+        <p class="service__contents-text part1">
+            ご自宅のお掃除からお買い物の代行、そのほか些細なお困りごとでもどんなことでも私たちにご相談ください!
         </p>
         <div class="service__content">
             <div class="card">
@@ -178,21 +186,23 @@
             <i class="fa fa-search-minus" aria-hidden="true"></i>
             料金表
         </h3>
-        <p>
+        <!-- <p class="service__contents-text">
             ご自宅のお掃除からお買い物の代行、そのほか些細なお困りごとでもどんなことでも私たちにご相談ください。
-        </p>
+        </p> -->
         <div class="service__content-price">
             <div class="card">
-                <img class="card__image" src="images/service/person.png" width="200" height="180" alt="wave" />
+                <img class="card__image" src="images/service/person.png" alt="wave" />
                 <div class="card-title">
                     <h2>
                         作業費
-                        <p>◆1名 1時間 ¥3,000</p>
+                        <p>
+                            ◆1名 1時間 ¥3,000
+                        </p>
                     </h2>
                 </div>
             </div>
             <div class="card">
-                <img class="card__image" src="images/service/shucchou.png" width="200" height="180" alt="wave" />
+                <img class="card__image" src="images/service/shucchou.png"  alt="wave" />
                 <div class="card-title">
                     <h2>
                         出張費
@@ -201,7 +211,7 @@
                 </div>
             </div>
             <div class="card">
-                <img class="card__image" src="images/service/car.png" width="200" height="180" alt="wave" />
+                <img class="card__image" src="images/service/car.png"  alt="wave" />
                 <div class="card-title">
                     <h2>
                         車両費
@@ -210,7 +220,7 @@
                 </div>
             </div>
             <div class="card">
-                <img class="card__image" src="images/service/shizai.png" height="180" alt="wave" />
+                <img class="card__image" src="images/service/shizai.png" alt="wave" />
                 <div class="card-title">
                     <h2>
                         資材費/別途
@@ -219,7 +229,7 @@
                 </div>
             </div>
             <div class="card">
-                <img class="card__image" src="images/service/gum.png" width="200" alt="wave" />
+                <img class="card__image" src="images/service/gum.png"  alt="wave" />
                 <div class="card-title">
                     <h2>
                         養生費/別途
@@ -228,7 +238,7 @@
                 </div>
             </div>
             <div class="card">
-                <img class="card__image" src="images/service/recycle.png" width="200" height="180" alt="wave" />
+                <img class="card__image" src="images/service/recycle.png"  alt="wave" />
                 <div class="card-title">
                     <h2>
                         処分費/別途

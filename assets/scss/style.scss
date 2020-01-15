@@ -2,20 +2,22 @@
 @import "mixin";
 
 
-
+$font-family--montserrat: 'Montserrat', sans-serif;
+$font-family--primary : $font-family--montserrat;
 //--------------------------------------------
 
 
 $white: #fff;
 $orange: #FFB033;
 $lightOrange: #FEF6E0;
+$beige: #FFF9F0;
 $yellow: #F2F20D;
 $blue: #0B83FA;
 $lightGray:#f4f4f4;
 $gray: #99A4AE;
 $darkGray: #545158;
 $black: #383838;
-$green: #86D8C9;
+$green: #59BEAB;
 
 
 //--------------------------------------------------
@@ -25,10 +27,10 @@ $breakpoints: ('sm': 'screen and (max-width: 400px)',
 'xl': 'screen and (max-width: 1200px)',
 ) !default;
 
-@mixin mq($breakpoint: md) {
-    // @media #{map-get($breakpoints, $breakpoint)} {
+@mixin mq($breakpoint: xl) {
+    @media #{map-get($breakpoints, $breakpoint)} {
     @content;
-    // }
+    }
 }
 
 
@@ -41,6 +43,8 @@ body {
     height: 100%;
     color: $black;
     margin: 0 auto;
+    background-color: $beige;
+    font-family: $font-family--primary;
 }
 
 a {
@@ -80,9 +84,22 @@ ul {
 
     &__util-nav {
         position: absolute;
-        top: 0;
-        right: 30px;
+        top: -5px;
+        right: 5px;
         width: 25%;
+
+        .btn-square {
+            width: 90%;
+            font-size: 1rem;
+            padding: .5rem 0;
+            position: absolute;
+            top: 8rem;
+            right: 1rem;
+            background-color: darken($orange, 10%);
+            border-bottom: solid 4px darken($orange, 15%);
+    border-radius: 8px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+        }
 
         @include mq(md) {
             width: 25%;
@@ -120,105 +137,162 @@ ul {
 
 
 // ---------------ハンバーガーメニュー---------------------
-@include mq (sm) {
+
+.sm-nav {
+    display: none;
+
+    @include mq (sm) {
+        display: block;
+    }
+}
+
+
+
     .contents {
-        transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+        @include mq (sm) {
+
+            transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
     }
 
     #navTgl:checked~.contents {
-        transform: translateX(250px);
+        @include mq (sm) {
+
+            transform: translateX(250px);
+        }
     }
 
     /* :::::: toggle button :::::: */
     #navTgl {
-        display: none;
+        @include mq (sm) {
+
+            display: none;
+        }
     }
 
     label {
-        cursor: pointer;
-        position: fixed;
-        top: 0;
-        left: 0;
+        @include mq (sm) {
+
+            cursor: pointer;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
     }
 
     .open {
-        z-index: 2;
-        width: 48px;
-        height: 48px;
-        background-color: $orange;
-        transition: background .6s, transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+        @include mq (sm) {
+
+            z-index: 2;
+            width: 48px;
+            height: 48px;
+            background-color: $orange;
+            transition: background .6s, transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
     }
 
     .open::before,
     .open::after {
-        content: "";
+        @include mq (sm) {
+
+            content: "";
+        }
     }
 
     .open span,
     .open::before,
     .open::after {
-        content: "";
-        position: absolute;
-        top: calc(50% - 1px);
-        left: 30%;
-        width: 40%;
-        border-bottom: 2px solid white;
-        transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+        @include mq (sm) {
+
+            content: "";
+            position: absolute;
+            top: calc(50% - 1px);
+            left: 30%;
+            width: 40%;
+            border-bottom: 2px solid white;
+            transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
     }
 
     .open::before {
-        transform: translateY(-8px);
+        @include mq (sm) {
+
+            transform: translateY(-8px);
+        }
     }
 
     .open::after {
-        transform: translateY(8px);
+        @include mq (sm) {
+
+            transform: translateY(8px);
+        }
     }
 
     .close {
-        z-index: 1;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        transition: background .6s;
+        @include mq (sm) {
+
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            transition: background .6s;
+        }
     }
 
     #navTgl:checked+.open {
-        background: indianRed;
-        transform: translateX(250px);
+        @include mq (sm) {
+
+            background: indianRed;
+            transform: translateX(250px);
+        }
     }
 
     #navTgl:checked+.open span {
-        transform: scaleX(0);
+        @include mq (sm) {
+
+            transform: scaleX(0);
+        }
     }
 
     #navTgl:checked+.open::before {
-        transform: rotate(45deg);
+        @include mq (sm) {
+
+            transform: rotate(45deg);
+        }
     }
 
     #navTgl:checked+.open::after {
-        transform: rotate(-45deg);
+        @include mq (sm) {
+
+            transform: rotate(-45deg);
+        }
     }
 
     #navTgl:checked~.close {
-        pointer-events: auto;
-        background: rgba(0, 0, 0, .3);
+        @include mq (sm) {
+
+            pointer-events: auto;
+            background: rgba(0, 0, 0, .3);
+        }
     }
-}
 
 .menu {
-    z-index: 1;
-    position: fixed;
-    overflow: auto;
-    top: 0;
-    left: 0;
-    width: 30%;
-    height: 50%;
-    margin: 0;
-    padding: 10px;
-    box-sizing: border-box;
-    background: rgba(0, 0, 0, .6);
-    transform: translateX(-100%);
-    transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+    @include mq (sm) {
+        z-index: 1;
+        position: fixed;
+        overflow: auto;
+        top: 0;
+        left: 0;
+        width: 30%;
+        height: 50%;
+        margin: 0;
+        padding: 10px;
+        box-sizing: border-box;
+        background: rgba(0, 0, 0, .6);
+        transform: translateX(-100%);
+        transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
 }
 
 
@@ -229,7 +303,10 @@ ul {
 //   transition: background .6s;
 // }
 #navTgl:checked~.menu {
-    transform: none;
+    @include mq (sm) {
+
+        transform: none;
+    }
 }
 
 
@@ -237,19 +314,20 @@ ul {
 //--------------------------------------------------
 .gl-nav {
     width: 100%;
-    background-color: #fff;
-    padding-bottom: 1rem;
-
+    padding-top: .5rem;
+    
     @include mq (sm) {
         width: 76%;
     }
-
+    
     &.transform {
         position: fixed;
         top: 0;
         left: 0;
         z-index: 100;
-        padding-bottom: 1rem;
+        padding-top: .5rem;
+        background-color: rgba(255, 255, 255, 0.8);
+
         box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.1);
 
         @include mq(sm) {
@@ -260,6 +338,7 @@ ul {
     &__items {
         display: flex;
         justify-content: space-around;
+        background-color: #fff;
 
         @include mq (sm) {
             display: block;
@@ -268,7 +347,7 @@ ul {
     }
 
     &__item {
-        margin-top: 15px;
+        margin: 8px 0 7px;
         width: 15%;
         padding-left: 2rem;
         border-left: 2px dotted $orange;
@@ -375,7 +454,7 @@ ul {
         width: 90%;
         margin: 0 auto 2rem;
         color: $black;
-        font-size: 2.8em;
+        font-size: 2.2em;
         letter-spacing: .2rem;
         @include underline;
 
@@ -424,6 +503,14 @@ ul {
         margin: 0 auto;
         width: 100%;
         margin-bottom: 5rem;
+        position: relative;
+
+        &::after {
+            content: url(../images/woman01.png);
+            position: absolute;
+            bottom: -200px;
+            right: -100px;
+        }
 
         @include mq (md) {
             margin-bottom: 1rem;
@@ -487,7 +574,7 @@ ul {
         &::after {
             content: '';
             position: absolute;
-            top: 40%;
+            top: 45%;
             display: inline-block;
             width: 6rem;
             height: 5px;
@@ -505,7 +592,7 @@ ul {
         }
 
         &::before {
-            left: -1%;
+            left: -1.5rem;
             transform: rotate(60deg);
             transform: rotate(60deg);
 
@@ -515,7 +602,7 @@ ul {
         }
 
         &::after {
-            right: 2%;
+            right: 0.1rem;
             transform: rotate(-60deg);
             transform: rotate(-60deg);
 
@@ -657,60 +744,80 @@ ul {
         border-top: 4px solid $yellow;
         border-bottom: 4px solid $yellow;
 
+        
         @include mq (sm) {
             font-size: 1.8rem;
             padding: 1rem 0;
         }
-
+        
+        
+        &-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: .1rem;
+            margin-bottom: 5rem;
+            position: relative;
+            
+            
+            @include mq (sm) {
+                width: 90%;
+                margin: 0 auto;
+                padding: 1rem 0;
+            }
+        }
     }
 
-    p {
-        font-size: 1.2rem;
-        font-weight: bold;
-        letter-spacing: .1rem;
-        margin-bottom: 5rem;
-
-        @include mq (sm) {
-            width: 90%;
-            margin: 0 auto;
-            padding: 1rem 0;
+    .part1 {
+        &::before {
+            content: url(../images/service/baketsu.png);
+            position: absolute;
+            top: -10rem;
+            left: 15rem;
+        }
+        &::after {
+            content: url(../images/service/baby.png);
+            position: absolute;
+            top: -8.5rem;
+            right: 15rem;
         }
     }
 
     &__content {
         margin: 0 auto 5rem;
-        width: 80%;
+        width: 100%;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
     }
 
-    &__content-price .card {
-        padding-top: 1rem;
-        height: 400px;
-
-        &__image {
-            background-color: #fff;
-        }
-
-
-        &-title {
-            margin: 0;
-        }
-
-        &-title .p {
-            font-size: .8rem;
-        }
+    &__content-price {
+        margin: 0 auto 5rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    
     }
+    
+    &__content-price > .card {
+        padding-top: 1rem;
+
+    }
+    
+    .card__image {
+    
+        height: 180px;
+    }
+       
 
 
     .card {
-        background: $lightOrange;
+        background: $lightGray;
         border: 2px solid $black;
         border-radius: 5px;
         display: inline-block;
         height: 300px;
-        margin: 1rem;
+        margin: 1rem 1rem 3rem;
         position: relative;
         width: 300px;
         box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
@@ -733,7 +840,7 @@ ul {
                 font-weight: bold;
                 letter-spacing: -0.05em;
                 margin: 0;
-                padding: 0;
+                padding: 1rem;
                 position: relative;
                 display: block;
                 cursor: pointer;
@@ -746,7 +853,7 @@ ul {
                     position: absolute;
                     font-family: FontAwesome;
                     content: "\f13a";
-                    top: .2rem;
+                    top: 1.3rem;
                     right: .5rem;
                     color: $orange;
                     cursor: pointer;
@@ -758,7 +865,7 @@ ul {
                     letter-spacing: -0.025em;
                     background-color: $white;
                     margin: 0;
-                    padding: 0;
+                    padding: 0.3rem 0;
                     text-align: left;
                 }
             }
@@ -797,7 +904,7 @@ ul {
 // ---------------BANNER-----------------
 .banner {
     width: 100%;
-    height: 23rem;
+    height: 20rem;
     background-color: $darkGray;
     position: relative;
 
@@ -842,8 +949,8 @@ ul {
     &__tel {
         font-size: 3.5rem;
         position: absolute;
-        left: 12rem;
-        bottom: .2rem;
+        left: 2rem;
+        bottom: .6rem;
         z-index: 20;
 
         @include mq(md) {
@@ -860,12 +967,12 @@ ul {
     &__btn {
         @include btn-square;
         width: 27%;
-        padding: 0.3rem;
+        padding: 01rem 1rem;
         position: absolute;
         font-size: 1.3rem;
         line-height: 2.5;
-        right: 13rem;
-        bottom: 1.5rem;
+        right: 8rem;
+        bottom: 0;
         z-index: 10;
 
         @include mq(md) {
@@ -964,8 +1071,8 @@ ul {
     }
 
     &__items {
-        width: 75%;
-        margin: 0 auto 3.5rem;
+        width: 80%;
+        margin: 0 auto 5rem;
         padding: 1rem 0;
         display: flex;
         border: 2px solid $black;
@@ -990,7 +1097,7 @@ ul {
             border-bottom: 2px solid $yellow;
             display: inline-block;
             height: 2.2rem;
-            padding-top: 1.8rem;
+            padding-top: 1rem;
 
             @include mq(md) {
                 padding-top: .8rem;
@@ -1016,10 +1123,10 @@ ul {
 
         &-title {
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             padding-left: 0.5rem;
             margin-right: 2rem;
-            width: 11%;
+            width: 13%;
             color: #FC7320;
             text-align-last: left;
 
@@ -1035,7 +1142,8 @@ ul {
         }
 
         &-text {
-            font-size: 1.6rem;
+            font-size: 1.2rem;
+            letter-spacing: .1rem;
             font-weight: bold;
             padding-left: 1.5rem;
             border-left: 2px solid $black;
@@ -1058,7 +1166,7 @@ ul {
 
         &:nth-of-type(1) {
             position: absolute;
-            top: 30%;
+            top: 25%;
             right: 3%;
             z-index: 2;
             width: 100px;
@@ -1074,7 +1182,7 @@ ul {
 
         &:nth-of-type(3) {
             position: absolute;
-            top: 45%;
+            top: 38%;
             right: 1%;
             width: 130px;
             z-index: 2;
@@ -1088,7 +1196,7 @@ ul {
 
         &:nth-of-type(5) {
             position: absolute;
-            top: 60%;
+            top: 50%;
             right: 1%;
             width: 150px;
             height: 200px;
@@ -1104,7 +1212,7 @@ ul {
 
         &:nth-of-type(7) {
             position: absolute;
-            bottom: 8%;
+            bottom: 20%;
             right: 3%;
             width: 110px;
             height: 220px;
@@ -1144,9 +1252,10 @@ ul {
 .faq {
     width: 100%;
     background-image: url(../images/faq/faq-back.png);
-    background-size: cover;
+    background-size: contain;
     text-align: center;
-    margin: 10rem 0;
+    padding-top: 6rem;
+    margin: 3rem 0; 
 
 
     &__title {
@@ -1241,7 +1350,7 @@ ul {
     height: 70px;
     position: fixed;
     right: -80px;
-    bottom: 50px;
+    bottom: 150px;
     border-radius: 50%;
     z-index: 500;
 
@@ -1250,7 +1359,7 @@ ul {
         display: block;
         text-decoration: none;
         font-size: 3rem;
-        color: $orange;
+        color: #FD6201;
     }
 
 }
@@ -1266,7 +1375,7 @@ ul {
     border-bottom: .3rem solid $orange;
 
     &__nav {
-        width: 30%;
+        width: 35%;
         margin: 0 auto;
         padding: 2rem 0 1rem;
         display: flex;

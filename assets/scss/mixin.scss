@@ -17,8 +17,8 @@
 
 @mixin btn-square {
     display: inline-block;
-    width: 30%;
-    margin: 0 auto;
+    width: 35%;
+    margin: 1.5rem auto;
     padding: 1em 1em;
     font-weight: bold;
     text-decoration: none;
@@ -39,7 +39,7 @@
         color: #fff;
     }
     &::after {
-        content: "\f0e0";
+        content: "\f003";
         font-family: FontAwesome;
         color: #fff;
     }
