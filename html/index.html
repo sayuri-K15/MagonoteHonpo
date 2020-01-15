@@ -21,13 +21,32 @@
 
 <body id="home">
     <header class="gl-header">
+
+
         <div class="container">
             <div class="gl-header__util-nav">
-                <img src="images/tel.png"  width="300" alt="">
+                <img src="images/tel.png" alt="">
             </div>
-            <h1 class="gl-header__logo"><a href="index.html"><img src="images/mago_logo02.png" width="400" alt="孫の手本舗" class="gl-header__logo-img"></a>
+            <h1 class="gl-header__logo"><a href="index.html"><img src="images/mago_logo02.png" alt="孫の手本舗" class="gl-header__logo-img"></a>
             </h1>
-            <nav class="gl-nav">
+
+
+
+
+<!-- ------------ハンバーガーメニュー----------------->
+            <input type="checkbox" id="navTgl">
+            <label for="navTgl" class="open"><span></span></label>
+            <label for="navTgl" class="close"></label>
+            <nav class="menu">
+            </nav>
+<!-- ------------------------------------------------------- -->
+
+
+
+
+
+
+            <nav class="gl-nav menu">
                 <ul class="gl-nav__items">
                     <li class="gl-nav__item"><a href="#home" class="gl-nav__item-link">ホーム</a></li>
                     <li class="gl-nav__item"><a href="#service" class="gl-nav__item-link">サービス内容</a></li>
@@ -38,9 +57,12 @@
             </nav>
         </div>
     </header>
+
+<div class="contents">
+
     <main class="hero">
         <h1 class="hero__title">
-            <img src="images/midashi03.jpg" width="1600" alt="かゆいところに手が届く何でもします孫の手本舗">
+            <img src="images/midashi03.jpg" alt="かゆいところに手が届く何でもします孫の手本舗">
         </h1>
     </main>
     <div class="container">
@@ -66,16 +88,17 @@
     </div>
     <section id="service" class="service">
         <div class="service__topics">
-            <h3 class="service__title"><span class="service__title-dot">ど</span><span class="service__title-dot">ん</span><span class="service__title-dot">な</span><span class="service__title-dot">些</span><span class="service__title-dot">細</span>な<span class="service__title-large">お困りごと</span>でも<span class="service__title-large">ご相談</span>ください<span class="service__title-q">！</span></h3>
+            <h3 class="service__title"><span class="service__title-dot">ど</span><span class="service__title-dot">ん</span><span class="service__title-dot">な</span><span class="service__title-dot">些</span><span class="service__title-dot">細</span>な<span class="service__title-large">お困りごと</span>でも<span class="service__title-large">ご相談</span>ください<span class="service__title-q">！</span>
+            </h3>
             <div class="service__topics-box">
-                <h2 class="service__topic"><span class="service__topic-middle">
+                <h2 class="service__topic">
+                    <span class="service__topic-middle">
                         <i class="fa fa-handshake-o" aria-hidden="true"></i>
                         孫の手本舗</span>の<span class="service__topic-large">サービス</span>とは</h2>
                 <p class="service__text">孫の手本舗は、埼玉県北本市を中心に、<span class="service__text-large">地域に根付いた便利サービス</span>を行っています。
                     無料見積りもお客様にとっての大切な作業のひとつです。作業を依頼する・しないにかかわらず<span class="service__text-large">どんな事でもご相談やお見積もり</span>にお呼びください。
                     便利屋をご自宅の地域でお探しの方はもちろん、場合によっては他の便利屋ではできない仕事も受け付けております。 孫の手本舗は、あなたのお悩みに<span class="service__text-large">親身に寄り添って</span>、お悩みを<span class="service__text-large">今すぐ解決</span>いたします！</p>
             </div>
-            <span class="service__badge"></span>
         </div>
         <h3 class="service__contents">
             <i class="fa fa-search-minus" aria-hidden="true"></i>
@@ -90,10 +113,11 @@
                 <div class="card-title">
                     <h2>
                         掃除・洗濯
-                        <p>◆部屋のお掃除
-                            ◆キッチンやお風呂のお掃除
-                            ◆お墓のお掃除
-                            ◆散らかった部屋の片付け</p>
+                        <p>◆部屋のお掃除<br>
+                            ◆キッチンやお風呂のお掃除<br>
+                            ◆お墓のお掃除<br>
+                            ◆散らかった部屋の片付け
+                        </p>
                     </h2>
                 </div>
             </div>
@@ -102,18 +126,19 @@
                 <div class="card-title">
                     <h2>
                         お買い物
-                        <p>買い物をして来てほしい</p>
+                        <p>◆買い物をして来てほしい</p>
                     </h2>
                 </div>
             </div>
             <div class="card">
-                <img class="card__image" src="images/photo/main03.jpg"   alt="wave" />
+                <img class="card__image" src="images/photo/main03.jpg" alt="wave" />
                 <div class="card-title">
                     <h2>
                         修理・修繕
-                        <p>◆カーテンレールを取り付けてほしい
-                            ◆棚を取り付けてほしい
-                            ◆玄関に手すりを付けてほしい</p>
+                        <p>◆カーテンレールを取り付けてほしい<br>
+                            ◆棚を取り付けてほしい<br>
+                            ◆玄関に手すりを付けてほしい
+                        </p>
                     </h2>
                 </div>
             </div>
@@ -122,9 +147,10 @@
                 <div class="card-title">
                     <h2>
                         簡単なPC・携帯操作
-                        <p>・パソコンの使い方の説明
-                            ・パソコンのセットアップ
-                            ・ネットワークの接続</p>
+                        <p>◆パソコンの使い方の説明<br>
+                            ◆パソコンのセットアップ<br>
+                            ◆ネットワークの接続
+                        </p>
                     </h2>
                 </div>
             </div>
@@ -133,7 +159,7 @@
                 <div class="card-title">
                     <h2>
                         ベビーシッター
-                        <p>子供と一緒に留守番をしてほしい</p>
+                        <p>◆子供と一緒に留守番をしてほしい</p>
                     </h2>
                 </div>
             </div>
@@ -142,8 +168,8 @@
                 <div class="card-title">
                     <h2>
                         その他雑用
-                        <p>照明器具の取り替えをしてほしい
-                        庭の雑草が伸びて来たので草むしりをしてほしい</p>
+                        <p>◆照明器具の取り替えをしてほしい<br>
+                            ◆庭の雑草が伸びて来たので草むしりをしてほしい</p>
                     </h2>
                 </div>
             </div>
@@ -161,7 +187,7 @@
                 <div class="card-title">
                     <h2>
                         作業費
-                        <p>1名 1時間 ¥3,000</p>
+                        <p>◆1名 1時間 ¥3,000</p>
                     </h2>
                 </div>
             </div>
@@ -170,7 +196,7 @@
                 <div class="card-title">
                     <h2>
                         出張費
-                        <p>1名 ¥2,000</p>
+                        <p>◆1名 ¥2,000</p>
                     </h2>
                 </div>
             </div>
@@ -179,7 +205,7 @@
                 <div class="card-title">
                     <h2>
                         車両費
-                        <p>1台 ¥3,000~</p>
+                        <p>◆1台 ¥3,000~</p>
                     </h2>
                 </div>
             </div>
@@ -188,7 +214,7 @@
                 <div class="card-title">
                     <h2>
                         資材費/別途
-                        <p>電球・除草シートなど資材を購入した場合にかかる費用です。</p>
+                        <p>◆電球・除草シートなど資材を購入した場合にかかる費用です。</p>
                     </h2>
                 </div>
             </div>
@@ -197,7 +223,7 @@
                 <div class="card-title">
                     <h2>
                         養生費/別途
-                        <p>壁や床などに、傷が付かないよう養生を行う際にかかる費用です。</p>
+                        <p>◆壁や床などに、傷が付かないよう養生を行う際にかかる費用です。</p>
                     </h2>
                 </div>
             </div>
@@ -206,24 +232,22 @@
                 <div class="card-title">
                     <h2>
                         処分費/別途
-                        <p>不用品を処分する際にお客様が、処分業者に支払って頂く費用です。</p>
+                        <p>◆不用品を処分する際にお客様が、処分業者に支払って頂く費用です。</p>
                     </h2>
                 </div>
             </div>
         </div>
         <p>※表示料金は、全て税別の料金です。</p>
         <a href="contact.html" class="btn-square">
-            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            お問い合わせはこちら
+            お問い合わせは<br>こちら
         </a>
     </section>
     <aside class="banner bubble">
         <img src="images/banner_title.png" alt="孫の手本舗はお客様の便利を追求したサービスを提供していきます" class="banner__title">
         <span class="banner__tel">
-            <img src="images/tel_banner.png"   width="65%" alt="tel:070-5463-7362">
+            <img src="images/tel_banner.png" width="65%" alt="tel:070-5463-7362">
         </span>
         <a href="contact.html" class="btn-square banner__btn">
-            <i class="fa fa-arrow-right" aria-hidden="true"></i>
             お問い合わせはこちら
         </a>
     </aside>
@@ -244,34 +268,38 @@
             <span class="flowofuse__items-title">お申し込み</span>
             <p class="flowofuse__items-text">まずはお電話か、お問い合わせフォームからお問い合わせください。</p>
         </div>
-        <div class="flowofuse__img"></div>
+        <div class="flowofuse__img">
+            <img src="images/use/use02.png" alt="">
+        </div>
         <div class="flowofuse__items">
             <span class="flowofuse__items-num">step.2</span>
             <span class="flowofuse__items-title">お見積もり</span>
             <p class="flowofuse__items-text">作業前にお見積りいたします。</p>
         </div>
-        <div class="flowofuse__img"></div>
+        <div class="flowofuse__img">
+            <img src="images/use/use03.png" alt="">
+        </div>
         <div class="flowofuse__items">
             <span class="flowofuse__items-num">step.3</span>
             <span class="flowofuse__items-title">作業開始</span>
             <p class="flowofuse__items-text">お約束の日時にお伺いし、責任を持って作業致します。</p>
         </div>
-        <div class="flowofuse__img"></div>
+        <div class="flowofuse__img">
+            <img src="images/use/use04.png" alt="">
+        </div>
         <div class="flowofuse__items">
             <span class="flowofuse__items-num">step.4</span>
             <span class="flowofuse__items-title">お支払い</span>
             <p class="flowofuse__items-text">作業終了後、現金にて料金をお支払いください。</p>
         </div>
         <a href="contact.html" class="flowofuse__btn">
-            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            お問い合わせはこちら
+            お問い合わせは<br>こちら
         </a>
     </section>
     <aside class="banner bubble">
         <img src="images/banner_title.png" alt="孫の手本舗はお客様の便利を追求したサービスを提供していきます" class="banner__title">
-        <span class="banner__tel"><img src="images/tel_banner.png"   width="65%" alt="tel:070-5463-7362"></span>
+        <span class="banner__tel"><img src="images/tel_banner.png" width="65%" alt="tel:070-5463-7362"></span>
         <a href="contact.html" class="banner__btn">
-            <i class="fa fa-arrow-right" aria-hidden="true"></i>
             お問い合わせはこちら
         </a>
     </aside>
@@ -318,8 +346,7 @@
             </dd>
         </dl>
         <a href="contact.html" class="btn-square">
-            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            お問い合わせはこちら
+            お問い合わせは<br>こちら
         </a>
     </section>
     <div id="page_top">
@@ -330,7 +357,6 @@
     <aside class="banner">
         <img src="images/banner_title.png" alt="孫の手本舗はお客様の便利を追求したサービスを提供していきます" class="banner__title">
         <span class="banner__tel"><img src="images/tel_banner.png" width="65%" alt="tel:070-5463-7362"></span>
-    
         <a href="contact.html" class="btn-square banner__btn">
             お問い合わせはこちら
         </a>
@@ -345,6 +371,7 @@
         </ul>
         <small>Copyright© 2020 All rights reserved.</small>
     </footer>
+</div>
 </body>
 
 </html>

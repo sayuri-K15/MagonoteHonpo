@@ -19,17 +19,16 @@ $green: #86D8C9;
 
 
 //--------------------------------------------------
-$breakpoints: (
-  'sm': 'screen and (min-width: 400px)',
-  'md': 'screen and (min-width: 768px)',
-  'lg': 'screen and (min-width: 1000px)',
-  'xl': 'screen and (min-width: 1200px)',
+$breakpoints: ('sm': 'screen and (max-width: 400px)',
+'md': 'screen and (max-width: 768px)',
+'lg': 'screen and (max-width: 1000px)',
+'xl': 'screen and (max-width: 1200px)',
 ) !default;
 
 @mixin mq($breakpoint: md) {
-  @media #{map-get($breakpoints, $breakpoint)} {
+    // @media #{map-get($breakpoints, $breakpoint)} {
     @content;
-  }
+    // }
 }
 
 
@@ -83,12 +82,18 @@ ul {
         position: absolute;
         top: 0;
         right: 30px;
-        font-size: 18px;
-        text-align: center;
+        width: 25%;
 
-        &__tel {
-            color: $orange;
-            font-size: 20px;
+        @include mq(md) {
+            width: 25%;
+            top: 0;
+            right: 1rem;
+        }
+
+        @include mq(sm) {
+            width: 75%;
+            top: 360px;
+            right: 45px;
         }
     }
 
@@ -97,15 +102,147 @@ ul {
         padding: 2rem 0;
         text-align: center;
 
+        @include mq (md) {
+            width: 50%;
+        }
+
+        @include mq (sm) {
+            width: 300px;
+            margin: 0;
+        }
+
     }
 
 }
 
+
+
+
+
+// ---------------ハンバーガーメニュー---------------------
+@include mq (sm) {
+    .contents {
+        transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    #navTgl:checked~.contents {
+        transform: translateX(250px);
+    }
+
+    /* :::::: toggle button :::::: */
+    #navTgl {
+        display: none;
+    }
+
+    label {
+        cursor: pointer;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    .open {
+        z-index: 2;
+        width: 48px;
+        height: 48px;
+        background-color: $orange;
+        transition: background .6s, transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .open::before,
+    .open::after {
+        content: "";
+    }
+
+    .open span,
+    .open::before,
+    .open::after {
+        content: "";
+        position: absolute;
+        top: calc(50% - 1px);
+        left: 30%;
+        width: 40%;
+        border-bottom: 2px solid white;
+        transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .open::before {
+        transform: translateY(-8px);
+    }
+
+    .open::after {
+        transform: translateY(8px);
+    }
+
+    .close {
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        transition: background .6s;
+    }
+
+    #navTgl:checked+.open {
+        background: indianRed;
+        transform: translateX(250px);
+    }
+
+    #navTgl:checked+.open span {
+        transform: scaleX(0);
+    }
+
+    #navTgl:checked+.open::before {
+        transform: rotate(45deg);
+    }
+
+    #navTgl:checked+.open::after {
+        transform: rotate(-45deg);
+    }
+
+    #navTgl:checked~.close {
+        pointer-events: auto;
+        background: rgba(0, 0, 0, .3);
+    }
+}
+
+.menu {
+    z-index: 1;
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 50%;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, .6);
+    transform: translateX(-100%);
+    transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+
+// .menu a {
+//   display: block;
+//   padding: 1em 2em;
+//   text-decoration: inherit;
+//   transition: background .6s;
+// }
+#navTgl:checked~.menu {
+    transform: none;
+}
+
+
+
+//--------------------------------------------------
 .gl-nav {
     width: 100%;
     background-color: #fff;
     padding-bottom: 1rem;
-    transition: .5s ease-in;
+
+    @include mq (sm) {
+        width: 76%;
+    }
 
     &.transform {
         position: fixed;
@@ -114,21 +251,36 @@ ul {
         z-index: 100;
         padding-bottom: 1rem;
         box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.1);
+
+        @include mq(sm) {
+            display: none;
+        }
     }
 
     &__items {
         display: flex;
         justify-content: space-around;
+
+        @include mq (sm) {
+            display: block;
+            width: 100%;
+        }
     }
 
     &__item {
         margin-top: 15px;
         width: 15%;
-        padding-left: 2em;
+        padding-left: 2rem;
         border-left: 2px dotted $orange;
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
+
+        @include mq (sm) {
+            width: 100%;
+            margin: 20px 0;
+            padding: 3px;
+        }
 
         &:nth-of-type(1) {
             background-image: url(../images/nav/nav01.jpg);
@@ -158,10 +310,13 @@ ul {
         text-align: center;
         display: inline-block;
         text-indent: -9999px;
-        transition: border-color 1s linear;
 
         &:hover {
             border-bottom: 3px solid $orange;
+
+            @include mq (sm) {
+                transition: background .6s;
+            }
         }
     }
 }
@@ -169,17 +324,19 @@ ul {
 /*---------HERO-----------------*/
 .hero {
     width: 100%;
-    margin: 0 2rem 6rem;
+    margin: 2rem auto 6rem;
+    text-align: center;
 
-    &__title {
-        width: 100%;
-        margin: 0 auto;
+    @include mq (sm) {
+        margin-top: 0;
+        margin-bottom: 10rem;
+
+        &__title {
+            margin: 0;
+        }
     }
+
 }
-
-
-
-
 
 // ------------------------PURPOSE----------------
 
@@ -199,7 +356,8 @@ ul {
 
 
     @include fukidashi;
-     &::before {
+
+    &::before {
         bottom: -6.2rem;
         border-top: 6.1rem solid $black;
         border-left: 3.1rem solid transparent;
@@ -215,41 +373,87 @@ ul {
 
     &__title {
         width: 90%;
-        height: 11rem;
         margin: 0 auto 2rem;
         color: $black;
-        font-size: 2.6em;
-        letter-spacing: 0.1em;
+        font-size: 2.8em;
+        letter-spacing: .2rem;
         @include underline;
+
+        @include mq (md) {
+            width: 95%;
+            font-size: 1.3em;
+            letter-spacing: 0.1em;
+            background: linear-gradient(transparent 60%, $yellow 60%)
+        }
+
+        @include mq (sm) {
+            font-size: 0.5rem;
+            background-color: none;
+            border-bottom: 2px solid $yellow;
+        }
+
     }
 
     &__title-large {
         font-size: 4.4rem;
+
+        @include mq(md) {
+            font-size: 3rem;
+        }
+
+        @include mq (sm) {
+            font-size: 2rem;
+        }
     }
 
     &__title-q {
         font-size: 8rem;
         letter-spacing: -.4rem;
+
+        @include mq (md) {
+            font-size: 5rem;
+            letter-spacing: -.4rem;
+        }
+
+        @include mq (sm) {
+            font-size: 2.8rem;
+        }
     }
 
     &__lists {
         margin: 0 auto;
         width: 100%;
         margin-bottom: 5rem;
+
+        @include mq (md) {
+            margin-bottom: 1rem;
+        }
+
     }
 
     &__list {
         text-align: left;
+        font-weight: bold;
         font-size: 1.2rem;
         text-indent: 20%;
         padding: .8rem 0.5rem;
+
+        @include mq (md) {
+            font-size: 1.1rem;
+            padding: .3rem 0.5rem;
+        }
+
+        @include mq (sm) {
+            font-size: 1rem;
+            text-indent: 0;
+        }
 
         .fa {
             color: $orange;
         }
     }
-
 }
+
 
 
 
@@ -262,6 +466,10 @@ ul {
     text-align: center;
     margin: 0 auto 11rem;
 
+    @include mq(md) {
+        font-size: 2rem;
+    }
+
     &__title {
         position: relative;
         width: 100%;
@@ -269,9 +477,11 @@ ul {
         margin: 0 0 4rem;
         color: #fff;
         font-size: 2.2em;
-        // border-bottom: 3rem solid $yellow;
         background-color: $darkGray;
-        // linear-gradient(transparent 50%, $yellow 50%); box-shadow: 0px 5px 2px rgba(0, 0, 0, 0.1);
+
+        @include mq (md) {
+            font-size: 1.3rem;
+        }
 
         &::before,
         &::after {
@@ -282,29 +492,61 @@ ul {
             width: 6rem;
             height: 5px;
             background-color: $orange;
+
+            @include mq (md) {
+                top: 40%;
+                width: 3.5rem;
+                height: 6px;
+            }
+
+            @include mq (sm) {
+                display: none;
+            }
         }
 
         &::before {
             left: -1%;
             transform: rotate(60deg);
             transform: rotate(60deg);
+
+            @include mq (md) {
+                left: -10px;
+            }
         }
 
         &::after {
             right: 2%;
             transform: rotate(-60deg);
             transform: rotate(-60deg);
+
+            @include mq (md) {
+                right: -10px;
+            }
         }
     }
+
 
     &__title-large {
         font-size: 4.4rem;
         letter-spacing: .3rem;
+
+        @include mq (md) {
+            font-size: 3rem;
+            letter-spacing: .1rem;
+        }
+
+        @include mq (sm) {
+            font-size: 3.5rem;
+        }
     }
 
     &__title-q {
         font-size: 6rem;
         letter-spacing: -0.5rem;
+
+        @include mq (sm) {
+            font-size: 4rem;
+        }
     }
 
     &__title-dot {
@@ -324,6 +566,11 @@ ul {
         }
     }
 
+
+
+
+
+
     &__topics {
         width: 100%;
         margin: 0 auto 10rem;
@@ -342,23 +589,60 @@ ul {
         margin: 0 auto 4.5rem;
         font-size: 1.3rem;
 
+        @include mq (md) {
+            font-size: 1rem;
+        }
+
+        @include mq (sm) {
+            display: flex;
+            flex-direction: column;
+            font-size: 1.2rem;
+        }
+
         &-middle {
             font-size: 2.4rem;
             letter-spacing: .8rem;
+
+            @include mq (md) {
+                font-size: 2rem;
+                letter-spacing: .3rem;
+            }
+
+            @include mq (sm) {
+                font-size: 1.8rem;
+                letter-spacing: .1rem;
+            }
         }
 
         &-large {
             font-size: 3.7rem;
             border-bottom: 3px solid $orange;
             letter-spacing: 1rem;
+
+            @include mq (md) {
+                font-size: 2.7rem;
+                letter-spacing: .3rem;
+            }
+
+            @include mq (sm) {
+                font-size: 3rem;
+                letter-spacing: .1rem;
+                line-height: 1.2;
+            }
         }
     }
+
+
 
     &__text {
         font-size: 1.2rem;
         text-align: left;
         line-height: 2;
         letter-spacing: 0.1em;
+
+        @include mq (md) {
+            font-size: 1rem;
+        }
 
     }
 
@@ -372,6 +656,25 @@ ul {
         @include contents-title;
         border-top: 4px solid $yellow;
         border-bottom: 4px solid $yellow;
+
+        @include mq (sm) {
+            font-size: 1.8rem;
+            padding: 1rem 0;
+        }
+
+    }
+
+    p {
+        font-size: 1.2rem;
+        font-weight: bold;
+        letter-spacing: .1rem;
+        margin-bottom: 5rem;
+
+        @include mq (sm) {
+            width: 90%;
+            margin: 0 auto;
+            padding: 1rem 0;
+        }
     }
 
     &__content {
@@ -382,23 +685,23 @@ ul {
         flex-wrap: wrap;
     }
 
-        &__content-price  .card {
-          padding-top: 1rem;
-          height: 400px;
+    &__content-price .card {
+        padding-top: 1rem;
+        height: 400px;
 
-          &__image {
-              background-color: #fff;
-          }
-
-
-          &-title {
-            margin: 0;
-          }
-
-          &-title .p {
-            font-size: .8rem;
-          }
+        &__image {
+            background-color: #fff;
         }
+
+
+        &-title {
+            margin: 0;
+        }
+
+        &-title .p {
+            font-size: .8rem;
+        }
+    }
 
 
     .card {
@@ -411,6 +714,12 @@ ul {
         position: relative;
         width: 300px;
         box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+
+        &__image {
+            @include mq (sm) {
+                height: 200px;
+            }
+        }
 
 
         .card-title {
@@ -429,15 +738,19 @@ ul {
                 display: block;
                 cursor: pointer;
 
+                @include mq (sm) {
+                    height: 100px;
+                }
+
                 &::after {
-                position: absolute;
-                font-family: FontAwesome;
-                content: "\f13a";
-                top: .2rem;
-                right: .5rem;
-                color: $orange;
-                cursor: pointer;
-            }
+                    position: absolute;
+                    font-family: FontAwesome;
+                    content: "\f13a";
+                    top: .2rem;
+                    right: .5rem;
+                    color: $orange;
+                    cursor: pointer;
+                }
 
                 p {
                     display: none;
@@ -446,6 +759,7 @@ ul {
                     background-color: $white;
                     margin: 0;
                     padding: 0;
+                    text-align: left;
                 }
             }
         }
@@ -457,14 +771,44 @@ ul {
 
 .btn-square {
     @include btn-square;
+
+    br {
+        display: none;
+    }
+
+    @include mq(md) {
+        font-size: 1.2rem;
+
+        br {
+            display: block;
+        }
+    }
+
+    @include mq (sm) {
+        width: 90%;
+        padding: 1rem 0;
+
+        br {
+            display: none;
+        }
+    }
 }
 
 // ---------------BANNER-----------------
 .banner {
     width: 100%;
-    height: 20rem;
+    height: 23rem;
     background-color: $darkGray;
     position: relative;
+
+    @include mq(md) {
+        height: 13.5rem;
+    }
+    @include mq(sm) {
+        height: 10rem;
+        display: flex;
+        flex-direction: column;
+    }
 
     &::before {
         position: absolute;
@@ -477,46 +821,94 @@ ul {
         background-repeat: no-repeat;
         z-index: 50;
 
+        @include mq (md) {
+            left: 4rem;
+        }
+        @include mq (sm) {
+            left: 0;
+        }
+
     }
 
     &__title {
         padding-top: 56px;
+
+        @include mq (sm) {
+          padding: 0;
+          height: 50px;
+        }
     }
 
     &__tel {
         font-size: 3.5rem;
         position: absolute;
-        left: 8rem;
+        left: 12rem;
         bottom: .2rem;
         z-index: 20;
 
+        @include mq(md) {
+            width: 60%;
+            left: 5rem;
+        }
+        @include mq(sm) {
+            width: 90%;
+        }
+
     }
 
-    &__tel-small {
-        font-size: 1.5rem;
-    }
 
     &__btn {
         @include btn-square;
-        width: 30%;
+        width: 27%;
         padding: 0.3rem;
         position: absolute;
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         line-height: 2.5;
-        right: 11rem;
+        right: 13rem;
         bottom: 1.5rem;
         z-index: 10;
+
+        @include mq(md) {
+            width: 40%;
+            padding: 0.3rem;
+            font-size: 1.1rem;
+            line-height: 2;
+            right: 3rem;
+            bottom: 1rem;
+        }
+        @include mq(sm) {
+            width: 90%;
+            padding: 0.3rem;
+            font-size: 1.1rem;
+            line-height: 2;
+            right: 3rem;
+            bottom: 1rem;
+        }
+
     }
+
+
 }
 
 .bubble {
-    @include fukidashi;
+
     &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        margin: auto;
         bottom: -4rem;
         border-top: 5rem solid $darkGray;
         border-left: 7rem solid transparent;
         border-right: 7rem solid transparent;
         z-index: 10;
+
+        @include mq (sm) {
+          display: none;
+        }
     }
 }
 
@@ -538,6 +930,11 @@ ul {
         position: relative;
         margin-top: 10rem;
         margin-bottom: 5rem;
+
+         @include mq (sm) {
+            font-size: 1.8rem;
+            padding: 1rem 0;
+        }
 
         &::before {
             content: "";
@@ -575,6 +972,14 @@ ul {
         background-color: #fff;
         position: relative;
 
+        @include mq (md) {
+            display: block;
+        }
+        @include  mq (sm) {
+           box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.1);
+        }
+
+
         &:nth-last-child(1) {
             margin-bottom: 4rem;
         }
@@ -585,30 +990,66 @@ ul {
             border-bottom: 2px solid $yellow;
             display: inline-block;
             height: 2.2rem;
-            padding-top: 1.2rem;
+            padding-top: 1.8rem;
+
+            @include mq(md) {
+                padding-top: .8rem;
+            }
         }
 
         &-num {
             font-size: 1.3rem;
             margin-left: 1.4rem;
+
+            @include mq(md) {
+                font-size: 1rem;
+                font-weight: bold;
+                line-height: 2.5;
+            }
+            @include mq(sm) {
+                font-size: 1.1srem;
+                font-weight: bold;
+                line-height: 2.5;
+                margin-left: 1rem;
+            }
         }
 
         &-title {
             font-weight: bold;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             padding-left: 0.5rem;
             margin-right: 2rem;
             width: 11%;
             color: #FC7320;
             text-align-last: left;
 
+            @include mq (md) {
+                font-size: 1.4rem;
+                width: 30%;
+            }
+             @include mq (sm) {
+                font-size: 1.4rem;
+                width: 50%;
+            }
+
         }
 
         &-text {
-            font-size: 1.2rem;
+            font-size: 1.6rem;
             font-weight: bold;
             padding-left: 1.5rem;
             border-left: 2px solid $black;
+            text-align: left;
+
+            @include mq (md) {
+                font-size: 1.2rem;
+                border-left: none;
+                text-align: center;
+            }
+            @include  mq (sm) {
+              font-size: 1rem;
+              padding: 0 0.5rem;
+            }
         }
     }
 
@@ -617,54 +1058,78 @@ ul {
 
         &:nth-of-type(1) {
             position: absolute;
-            top: 19.5%;
-            right: 12%;
+            top: 30%;
+            right: 3%;
             z-index: 2;
-            width: 108px;
+            width: 100px;
             height: 150px;
+
+            @include  mq (sm) {
+              right: 0;
+              top: 32%;
+              width: 80px;
+            }
 
         }
 
         &:nth-of-type(3) {
-            background-image: url(../images/use/use02.png);
             position: absolute;
-            top: 36%;
-            right: 20%;
-            width: 170px;
-            height: 180px;
+            top: 45%;
+            right: 1%;
+            width: 130px;
             z-index: 2;
 
+             @include  mq (sm) {
+              right: 0;
+              top: 45%;
+              width: 90px;
+            }
         }
 
         &:nth-of-type(5) {
-            background-image: url(../images/use/use03.png);
             position: absolute;
-            top: 49%;
-            right: 8%;
-            width: 200px;
+            top: 60%;
+            right: 1%;
+            width: 150px;
             height: 200px;
             z-index: 2;
+
+             @include  mq (sm) {
+              right: -20px;
+              top: 60%;
+              width: 100px;
+            }
 
         }
 
         &:nth-of-type(7) {
-            background-image: url(../images/use/use04.png);
             position: absolute;
-            bottom: 17%;
-            right: 22%;
-            width: 150px;
+            bottom: 8%;
+            right: 3%;
+            width: 110px;
             height: 220px;
             z-index: 2;
+
+             @include  mq (sm) {
+              right: -15px;
+              bottom: 10%;
+              width: 90px;
+            }
 
         }
     }
 
     &__btn {
         @include btn-square;
-        position: absolute;
-        left: 32%;
-        bottom: -5%;
         z-index: 3;
+
+        @include mq(md) {
+            font-size: 1.2rem;
+
+            br {
+                display: block;
+            }
+        }
     }
 }
 
@@ -710,10 +1175,18 @@ ul {
             position: relative;
             display: block;
 
+            @include mq (md) {
+                width: 70%;
+            }
+
             &.active::after {
                 content: "\f068";
                 font-family: FontAwesome;
                 color: #fff;
+
+                @include mq(md) {
+                    right: -1.5rem;
+                }
             }
 
             &::before {
@@ -731,6 +1204,10 @@ ul {
                 top: 1.5rem;
                 right: 0;
                 cursor: pointer;
+
+                @include mq(md) {
+                    right: -1.5rem;
+                }
             }
         }
 
@@ -766,6 +1243,7 @@ ul {
     right: -80px;
     bottom: 50px;
     border-radius: 50%;
+    z-index: 500;
 
     a {
         position: relative;
@@ -793,6 +1271,11 @@ ul {
         padding: 2rem 0 1rem;
         display: flex;
         justify-content: space-between;
+
+        @include mq (md) {
+            width: 80%;
+            padding-top: 1rem;
+        }
 
         &-list {
 

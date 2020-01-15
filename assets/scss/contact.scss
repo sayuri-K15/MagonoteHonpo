@@ -161,8 +161,8 @@ textarea {
 
   @include mq(415) {
     box-shadow: 0px 32px 47px rgba(32, 23, 23, 0.09);
-    margin: 5rem 3rem;
-    float: left;
+    margin: 5rem 10rem;
+    float: right;
   }
 
   h3 {
@@ -480,9 +480,9 @@ textarea {
 
 .contact {
   width: 40%;
-  margin: 5rem 8rem  0;
+  margin: 8rem 10rem;
   padding-bottom: 8rem;
-  float: right;
+  float: left;
 
   &__center {
     text-align: center;
