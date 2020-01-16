@@ -4,7 +4,8 @@
 //Text
 $base__font-size: 16px;
 
-$font-family--montserrat: 'Montserrat', sans-serif;
+$font-family--montserrat: 'Montserrat',
+sans-serif;
 $font-family--primary : $font-family--montserrat;
 
 //Colors
@@ -21,21 +22,17 @@ $gray: #707070;
 $black: #383838;
 
 //Color Palette
-$palettes: (
-  gray-shades: (
-    darker: #9FAAB7,
-    base: #99A4AE,
-    light: #DCDCE3,
-    lighter: #BEC1CA,
-    lightest: #F2F6F8
-  )
-);
+$palettes: (gray-shades: (darker: #9FAAB7,
+base: #99A4AE,
+light: #DCDCE3,
+lighter: #BEC1CA,
+lightest: #F2F6F8));
 
 // Color usages
 $main-background-color: #F8FAFA;
 $calendar-item-border: #FEFEFE;
 $calendar-item-text: #424588;
-$calendar-button-color:  #E9E8E8;
+$calendar-button-color: #E9E8E8;
 
 //Font size variables
 $lg-font-size: 20px;
@@ -51,88 +48,97 @@ $font-weight--regular: 400;
 //Color Usage
 $primary-color: $orange;
 
-@function palette($palette, $shade: base){
-  @return map-get(map-get($palettes, $palette), $shade);
+@function palette($palette, $shade: base) {
+    @return map-get(map-get($palettes, $palette), $shade);
 }
+
 // Retrieved from https://github.com/sshikhrakar/Sass-Starter/
 // BEM(Block Element Modifier) Naming Convention
 // For Element
 // $element  - Just the element name for the parent block (doesn't require the parent Block name)
 // @usage    - `.Nav {@include e(item){...}}`
-@mixin e($element){
-  &__#{$element}{
-    @content;
-  }
+@mixin e($element) {
+    &__#{$element} {
+        @content;
+    }
 }
 
 // For Modifier
 // $modifier  - Just the modifier name for the parent block or element
 // @usage     - `.Nav {@include e(item) {@include m(active) {...}}}`
-@mixin m($modifier){
-  &--#{$modifier}{
-    @content;
-  }
+@mixin m($modifier) {
+    &--#{$modifier} {
+        @content;
+    }
 }
 
 // Media Query
-@mixin mq($break){
-    @if type-of($break) == 'number' {
-      @media(min-width: $break + 'px') {
-        @content;
-      }
+@mixin mq($break) {
+    @if type-of($break)=='number' {
+        @media(min-width: $break + 'px') {
+            @content;
+        }
     }
+
     @else {
-      @error "No value could be retrieved for '#{$break}'";
+        @error "No value could be retrieved for '#{$break}'";
     }
 }
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 // Base Code
-html, body{
-  height: 100%;
+html,
+body {
+    height: 100%;
 }
-body{
-  font-family: $font-family--primary;
-  background: $beige;
+
+body {
+    font-family: $font-family--primary;
+    background: $beige;
 }
+
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
+
 ul {
-  list-style: none;
+    list-style: none;
 }
-input, textarea {
-  border: none;
-  font-size: 1.3rem;
+
+input,
+textarea {
+    border: none;
+    font-size: 1.3rem;
 }
+
 .container {
-  width: 80%;
-  margin: 0 auto;
+    width: 80%;
+    margin: 0 auto;
 }
+
 // -------------------GLOVAL HEADER--------------
 .gl-header {
-  width: 100%;
-  position: relative;
-  border-top: .8rem solid $orange;
-  padding-top: 2rem;
+    width: 100%;
+    position: relative;
+    border-top: .8rem solid $orange;
 
-  &__util-nav {
-    position: absolute;
-    top: -1rem;
-    right: 5rem;
-    width: 20%; 
-  }
+    &__util-nav {
+        position: absolute;
+        top: 1rem;
+        right: -2rem;
+        width: 35%;
+    }
 
-  &__logo {
-    margin: 0 auto;
-    text-align: center;
-    cursor: pointer;
-  }
+    &__logo {
+        margin: 0 auto;
+        padding: 0.3rem 0;
+        cursor: pointer;
+    }
 
 }
 
@@ -143,32 +149,32 @@ input, textarea {
 
 
 .mock-up-link {
-  display: none;
+    display: none;
 
-  @include mq(768) {
-    display: block;
-  }
+    @include mq(768) {
+        display: block;
+    }
 }
 
 .main-container-wrapper {
-  background-color: $beige;
-  text-align: center;
-  min-width: 320px;
-  min-height: 568px;
-  max-width: 414px;
-  overflow-y: auto;
+    background-color: $beige;
+    text-align: center;
+    min-width: 320px;
+    min-height: 568px;
+    max-width: 414px;
+    overflow-y: auto;
 
-  @include mq(415) {
-    margin: 5rem 8rem 0 0;
-    float: right;
-  }
+    @include mq(415) {
+        margin: 5rem 8rem 0 0;
+        float: right;
+    }
 
-  h3 {
-    @include underline;
-    display: inline-block;
-    margin-bottom: 2rem;
-    font-size: 1.3rem;
-  }
+    h3 {
+        @include underline;
+        display: inline-block;
+        margin-bottom: 2rem;
+        font-size: 1.3rem;
+    }
 }
 
 // .header {
@@ -180,7 +186,7 @@ input, textarea {
 //   position: relative;
 
 
-  @include e(btn) {
+@include e(btn) {
     background-color: $primary-color;
     border: 2px solid $white;
     border-radius: 50%;
@@ -194,283 +200,283 @@ input, textarea {
 
     &:hover,
     &:focus {
-      background: darken($orange, 8%);
-      transition: all 0.3s ease-in;
-      outline: none;
+        background: darken($orange, 8%);
+        transition: all 0.3s ease-in;
+        outline: none;
     }
 
     .icon {
-      display: inline-block;
+        display: inline-block;
     }
 
     @include m(left) {
-      left: -25px;
-      padding-left: 38px;
-      text-align: left;
+        left: -25px;
+        padding-left: 38px;
+        text-align: left;
     }
 
     @include m(right) {
-      padding-right: 32px;
-      right: -25px;
-      text-align: right;
+        padding-right: 32px;
+        right: -25px;
+        text-align: right;
     }
-  }
+}
 
 
 .calendar-container {
-  background-color: $white;
-  border: 2px solid $lightGray;
-  padding: 16px;
-  margin-bottom: 5rem;
-  box-shadow: 20px 32px 37px rgba(32, 23, 23, 0.09);
+    background-color: $white;
+    border: 2px solid $lightGray;
+    padding: 16px;
+    margin-bottom: 5rem;
+    box-shadow: 20px 32px 37px rgba(32, 23, 23, 0.09);
 
-  @include e(header) {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  @include e(btn) {
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    font-size: 16px;
-    outline: none;
-    color: $calendar-button-color;
-
-    &:hover,
-    &:focus {
-      color: palette(gray-shades, darker);
-      transition: all 0.3s ease-in;
+    @include e(header) {
+        display: flex;
+        justify-content: space-between;
     }
-  }
 
-  &__title .fa{
-    color: $orange;
-  }
+    @include e(btn) {
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        font-size: 16px;
+        outline: none;
+        color: $calendar-button-color;
 
-  @include e(title) {
-    color: $black;
-    font-size: $lg-font-size;
-    font-weight: $font-weight--bold;
-  }
+        &:hover,
+        &:focus {
+            color: palette(gray-shades, darker);
+            transition: all 0.3s ease-in;
+        }
+    }
+
+    &__title .fa {
+        color: $orange;
+    }
+
+    @include e(title) {
+        color: $black;
+        font-size: $lg-font-size;
+        font-weight: $font-weight--bold;
+    }
 }
 
 .calendar-table {
-  margin-top: 12px;
-  width: 100%;
-
-  @include e(item) {
-    border: 2px solid transparent;
-    border-radius: 5px;
-    color: $calendar-item-text;
-    font-size: 1rem;
-    font-weight: $font-weight--bold;
+    margin-top: 12px;
     width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
 
-    &:hover {
-      background: #f8fafa;
-      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-      transition: 0.2s all ease-in;
-    }
-  }
-
-
-  @include e(row) {
-    display: flex;
-    justify-content: center;
-  }
-
-  @include e(header) {
-    border-bottom: 2px solid palette(gray-shades, lightest);
-    margin-bottom: 4px;
-
-    .calendar-table__col {
-      display: inline-block;
-      color: $gray;
-      font-size: $sm-font-size;
-      font-weight: $font-weight--bold;
-      padding: 12px 3px;
-      text-align: center;
-      text-transform: uppercase;
-      width: 40px;
-      height: 38px;
-
-      @include mq(360) {
-        width: 46px;
-      }
-
-      @include mq(410) {
-        width: 54px;
-      }
-    }
-  }
-
-  @include e(body) {
-    .calendar-table__col {
-      width: 40px;
-      height: 42px;
-      padding-bottom: 2px;
-
-      @include mq(360) {
-        width: 46px;
-        height: 48px;
-      }
-
-      @include mq(410) {
-        width: 54px;
-        height: 56px;
-      }
-    }
-  }
-
-  @include e(today) {
-    .calendar-table__item {
-      border-color: $calendar-item-border;
-      background-color: palette(gray-shades, lightest);
-      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-    }
-  }
-
-  @include e(event)  {
-    .calendar-table__item {
-      background-color: $green;
-      border-color: $calendar-item-border;
-      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-      color: $white;
-    }
-
-    @include m(long) {
-      overflow-x: hidden;
-
-      .calendar-table__item {
-        border-radius: 0;
-        border-width: 2px 0;
-      }
-    }
-
-    @include m(start) {
-      .calendar-table__item {
-        border-left: 2px solid $white;
-        border-radius: 5px 0 0 5px;
-      }
-
-      &.calendar-table__col:last-child {
-        .calendar-table__item {
-          border-width: 2px;
-        }
-      }
-    }
-
-    @include m(end) {
-      .calendar-table__item {
-        border-right: 2px solid $white;
-        border-radius: 0 5px 5px 0;
-      }
-
-      &.calendar-table__col:first-child {
-        .calendar-table__item {
-          border-width: 2px;
-        }
-      }
-    }
-  }
-
-  @include e(inactive) {
-    .calendar-table__item {
-      color: palette(gray-shades, light);
-      cursor: default;
-
-      &:hover {
-        background: transparent;
-        box-shadow: none;
-      }
-    }
-
-    &.calendar-table__event {
-      .calendar-table__item {
-        color: $white;
-        opacity: 0.25;
+    @include e(item) {
+        border: 2px solid transparent;
+        border-radius: 5px;
+        color: $calendar-item-text;
+        font-size: 1rem;
+        font-weight: $font-weight--bold;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
 
         &:hover {
-          background: $blue;
-          box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+            background: #f8fafa;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+            transition: 0.2s all ease-in;
         }
-      }
     }
-  }
+
+
+    @include e(row) {
+        display: flex;
+        justify-content: center;
+    }
+
+    @include e(header) {
+        border-bottom: 2px solid palette(gray-shades, lightest);
+        margin-bottom: 4px;
+
+        .calendar-table__col {
+            display: inline-block;
+            color: $gray;
+            font-size: $sm-font-size;
+            font-weight: $font-weight--bold;
+            padding: 12px 3px;
+            text-align: center;
+            text-transform: uppercase;
+            width: 40px;
+            height: 38px;
+
+            @include mq(360) {
+                width: 46px;
+            }
+
+            @include mq(410) {
+                width: 54px;
+            }
+        }
+    }
+
+    @include e(body) {
+        .calendar-table__col {
+            width: 40px;
+            height: 42px;
+            padding-bottom: 2px;
+
+            @include mq(360) {
+                width: 46px;
+                height: 48px;
+            }
+
+            @include mq(410) {
+                width: 54px;
+                height: 56px;
+            }
+        }
+    }
+
+    @include e(today) {
+        .calendar-table__item {
+            border-color: $calendar-item-border;
+            background-color: palette(gray-shades, lightest);
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    @include e(event) {
+        .calendar-table__item {
+            background-color: $green;
+            border-color: $calendar-item-border;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+            color: $white;
+        }
+
+        @include m(long) {
+            overflow-x: hidden;
+
+            .calendar-table__item {
+                border-radius: 0;
+                border-width: 2px 0;
+            }
+        }
+
+        @include m(start) {
+            .calendar-table__item {
+                border-left: 2px solid $white;
+                border-radius: 5px 0 0 5px;
+            }
+
+            &.calendar-table__col:last-child {
+                .calendar-table__item {
+                    border-width: 2px;
+                }
+            }
+        }
+
+        @include m(end) {
+            .calendar-table__item {
+                border-right: 2px solid $white;
+                border-radius: 0 5px 5px 0;
+            }
+
+            &.calendar-table__col:first-child {
+                .calendar-table__item {
+                    border-width: 2px;
+                }
+            }
+        }
+    }
+
+    @include e(inactive) {
+        .calendar-table__item {
+            color: palette(gray-shades, light);
+            cursor: default;
+
+            &:hover {
+                background: transparent;
+                box-shadow: none;
+            }
+        }
+
+        &.calendar-table__event {
+            .calendar-table__item {
+                color: $white;
+                opacity: 0.25;
+
+                &:hover {
+                    background: $blue;
+                    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+                }
+            }
+        }
+    }
 }
 
 .events-container {
-  padding: 2rem 15px;
-  border: 2px solid $lightGray;
-  background: $main-background-color;
-  box-shadow: 20px 32px 37px rgba(32, 23, 23, 0.09);
+    padding: 2rem 15px;
+    border: 2px solid $lightGray;
+    background: $main-background-color;
+    box-shadow: 20px 32px 37px rgba(32, 23, 23, 0.09);
 }
 
 .events {
-  
-  @include e(title) {
-    color: $black;
-    display: inline-block;
-    font-size: 1rem;
-    font-weight: $font-weight--semi-bold;
-    margin-bottom: 16px;
-    
-  }
 
-  @include e(tag) {
-    background: $green;
-    border: 2px solid $calendar-item-border;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    color: $white;
-    font-size: 1rem;
-    width: 5rem;
-    margin-left: 16px;
-    padding: 5px 2px;
-    text-align: center;
+    @include e(title) {
+        color: $black;
+        display: inline-block;
+        font-size: 1rem;
+        font-weight: $font-weight--semi-bold;
+        margin-bottom: 16px;
 
-    @include m(highlighted) {
-      background: $lightOrange;
     }
-  }
 
-  @include e(item) {
-    background: $white;
-    border-left: 8px solid $orange;
-    border-radius: 2px;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05);
-    padding: 15px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
+    @include e(tag) {
+        background: $green;
+        border: 2px solid $calendar-item-border;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        color: $white;
+        font-size: 1rem;
+        width: 5rem;
+        margin-left: 16px;
+        padding: 5px 2px;
+        text-align: center;
 
-    @include m(left) {
-      width: calc(100% - 76px);
-      text-align: left;
+        @include m(highlighted) {
+            background: $lightOrange;
+        }
     }
-  }
 
-  @include e(name) {
-    font-size: $sm-font-size;
-    font-weight: $font-weight--bold;
-    color: $black;
-    display: block;
-    margin-bottom: 6px;
-  }
+    @include e(item) {
+        background: $white;
+        border-left: 8px solid $orange;
+        border-radius: 2px;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05);
+        padding: 15px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
 
-  @include e(date) {
-    font-size: 1.2rem;
-    color: $blue;
-    display: inline-block;
-  }
+        @include m(left) {
+            width: calc(100% - 76px);
+            text-align: left;
+        }
+    }
+
+    @include e(name) {
+        font-size: $sm-font-size;
+        font-weight: $font-weight--bold;
+        color: $black;
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    @include e(date) {
+        font-size: 1.2rem;
+        color: $blue;
+        display: inline-block;
+    }
 }
 
 
@@ -484,99 +490,105 @@ input, textarea {
 
 
 .contact {
-  width: 40%;
-  margin: 8rem 0 0 6rem;
-  padding-bottom: 8rem;
-  float: left;
+    width: 40%;
+    margin: 8rem 0 0 6rem;
+    padding-bottom: 8rem;
+    float: left;
 
-  &__center {
-    width: 85%;
-    text-align: center;
-    line-height: 2;
-    margin: 8rem auto 3rem;
+    &__center {
+        width: 85%;
+        text-align: center;
+        line-height: 2;
+        margin: 8rem auto 3rem;
 
-    p {
-      letter-spacing: 0.1rem;
+        p {
+            letter-spacing: 0.1rem;
+        }
     }
-  }
 
-  &__title {
-      font-size: 1.8rem;
-      font-weight: bold;
-      text-align: center;
-      letter-spacing: .3rem;
-      border-bottom: 2px solid $orange;
-      display: inline-block;
-      margin: 0 auto 3rem;
-
-  }
-  &__form {
-      width: 100%;
-      margin: 0 auto;
-
-      &-item {
-          width: 100%;
-
-          &__title {
-              font-size: 1.1rem;
-              font-weight: bold;
-              margin-bottom: .5rem;
-
-          }
-          &__title-r {
-              color: $orange;
-              font-size: 1rem;
-          }
-          &__body {
-              width: 100%;
-              margin: 0 0 4rem;
-              border: 2px solid $lightGray;
-              box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-          }
-      }
-  }
-  .checkbox {
-    font-size: 1rem;
-    margin-top: 1rem;
-    border: none;
-    box-shadow: none;
-
-    input{
-      margin-left: 1.2rem;
-    }
-  }
-  &__form-box{
-      width: 100%;
-      height: 50px;
-      padding-left: 1.5rem;
-      border-width: 0;
-      border-radius: 3px;
-      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05);
-  }
-  &__form-boxarea {
-      width: 100%;
-      height: 100px;
-      padding-left: 1.5rem;
-      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05);
-  }
-  &__form-submit {
-      &__link {
-        background-color: #fff;
-        color: $orange;
-        padding: .8rem 1.5rem;
-        margin-right: 1.5rem;
-        border: 1px solid $orange;
-        border-radius: 8px;
-
-      }
-      &__btn {
-        background-color: $orange;
-        padding: .8rem 1.5rem;
-        border-radius: 8px;
-        color: #fff;
+    &__title {
+        font-size: 1.8rem;
         font-weight: bold;
-      }
-  }
+        text-align: center;
+        letter-spacing: .3rem;
+        border-bottom: 2px solid $orange;
+        display: inline-block;
+        margin: 0 auto 3rem;
+
+    }
+
+    &__form {
+        width: 100%;
+        margin: 0 auto;
+
+        &-item {
+            width: 100%;
+
+            &__title {
+                font-size: 1.1rem;
+                font-weight: bold;
+                margin-bottom: .5rem;
+
+            }
+
+            &__title-r {
+                color: $orange;
+                font-size: 1rem;
+            }
+
+            &__body {
+                width: 100%;
+                margin: 0 0 4rem;
+                border: 2px solid $lightGray;
+                box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+
+    .checkbox {
+        font-size: 1rem;
+        margin-top: 1rem;
+        border: none;
+        box-shadow: none;
+
+        input {
+            margin-left: 1.2rem;
+        }
+    }
+
+    &__form-box {
+        width: 100%;
+        height: 50px;
+        padding-left: 1.5rem;
+        border-width: 0;
+        border-radius: 3px;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    &__form-boxarea {
+        width: 100%;
+        height: 100px;
+        padding-left: 1.5rem;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    &__form-submit {
+        &__link {
+            background-color: #fff;
+            color: $orange;
+            padding: .8rem 1.5rem;
+            margin-right: 1.5rem;
+            border: 1px solid $orange;
+            border-radius: 8px;
+
+        }
+
+        &__btn {
+            background-color: $orange;
+            padding: .8rem 1.5rem;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: bold;
+        }
+    }
 }
-
-

@@ -49,9 +49,11 @@ body {
 
 a {
     text-decoration: none;
+    color: $black;
+    cursor: pointer;
 }
 
-dd {
+h1,dd {
     margin: 0;
 }
 
@@ -84,17 +86,17 @@ ul {
 
     &__util-nav {
         position: absolute;
-        top: -5px;
-        right: 5px;
-        width: 25%;
+        top: 0px;
+        right: -2rem;
+        width: 30%;
 
         .btn-square {
-            width: 90%;
-            font-size: 1rem;
-            padding: .5rem 0;
+            width: 70%;
+            font-size: 1.1rem;
+            padding: 1rem 0;
             position: absolute;
-            top: 8rem;
-            right: 1rem;
+            top: -1rem;
+            right: 26rem;
             background-color: darken($orange, 10%);
             border-bottom: solid 4px darken($orange, 15%);
     border-radius: 8px;
@@ -115,9 +117,8 @@ ul {
     }
 
     &__logo {
-        margin: 0 auto;
-        padding: 2rem 0;
-        text-align: center;
+        margin:  auto 0rem ;
+        padding: 0.3rem 0;
 
         @include mq (md) {
             width: 50%;
@@ -314,12 +315,11 @@ ul {
 //--------------------------------------------------
 .gl-nav {
     width: 100%;
-    padding-top: .5rem;
-    
+    background-color: #fff;
     @include mq (sm) {
         width: 76%;
     }
-    
+
     &.transform {
         position: fixed;
         top: 0;
@@ -337,7 +337,7 @@ ul {
 
     &__items {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         background-color: #fff;
 
         @include mq (sm) {
@@ -349,11 +349,14 @@ ul {
     &__item {
         margin: 8px 0 7px;
         width: 15%;
-        padding-left: 2rem;
+        padding: 0 2rem;
         border-left: 2px dotted $orange;
-        background-position: center center;
-        background-size: contain;
-        background-repeat: no-repeat;
+        text-align: center;
+
+        &:nth-child(1) {
+            border-left: none;
+        }
+
 
         @include mq (sm) {
             width: 100%;
@@ -361,34 +364,19 @@ ul {
             padding: 3px;
         }
 
-        &:nth-of-type(1) {
-            background-image: url(../images/nav/nav01.jpg);
-            border-left: none;
-        }
 
-        &:nth-of-type(2) {
-            background-image: url(../images/nav/nav02.jpg);
-        }
 
-        &:nth-of-type(3) {
-            background-image: url(../images/nav/nav03.jpg);
-        }
-
-        &:nth-of-type(4) {
-            background-image: url(../images/nav/nav04.jpg);
-        }
-
-        &:nth-of-type(5) {
-            background-image: url(../images/nav/nav05.jpg);
-        }
     }
 
     &__item-link {
         width: 100%;
         height: 3em;
-        text-align: center;
+        font-weight: bold;
         display: inline-block;
-        text-indent: -9999px;
+
+        .eng {
+            font-weight: normal;
+        }
 
         &:hover {
             border-bottom: 3px solid $orange;
@@ -398,12 +386,14 @@ ul {
             }
         }
     }
+
 }
 
 /*---------HERO-----------------*/
 .hero {
     width: 100%;
-    margin: 2rem auto 6rem;
+    margin: 0rem auto 6rem;
+    padding: 0;
     text-align: center;
 
     @include mq (sm) {
@@ -413,6 +403,10 @@ ul {
         &__title {
             margin: 0;
         }
+    }
+
+    @include mq (sm) {
+        margin-bottom: 15rem;
     }
 
 }
@@ -430,7 +424,7 @@ ul {
     text-align: center;
     margin: 0 auto 10rem;
     background-color: $lightGray;
-    box-shadow: 0 19px 30px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 19px 30px rgba(0, 0, 0, 0.1), 0 15px 12px rgba(0, 0, 0, 0.22);
     position: relative;
 
 
@@ -467,8 +461,8 @@ ul {
 
         @include mq (sm) {
             font-size: 0.5rem;
-            background-color: none;
-            border-bottom: 2px solid $yellow;
+            background: none;
+            border-bottom: 4px solid $yellow;
         }
 
     }
@@ -481,7 +475,7 @@ ul {
         }
 
         @include mq (sm) {
-            font-size: 2rem;
+            font-size: 1.2rem;
         }
     }
 
@@ -510,6 +504,10 @@ ul {
             position: absolute;
             bottom: -200px;
             right: -100px;
+
+            @include mq (sm) {
+                display: none;
+            }
         }
 
         @include mq (md) {
@@ -744,21 +742,21 @@ ul {
         border-top: 4px solid $yellow;
         border-bottom: 4px solid $yellow;
 
-        
+
         @include mq (sm) {
             font-size: 1.8rem;
             padding: 1rem 0;
         }
-        
-        
+
+
         &-text {
             font-size: 1.2rem;
             font-weight: bold;
             letter-spacing: .1rem;
             margin-bottom: 5rem;
             position: relative;
-            
-            
+
+
             @include mq (sm) {
                 width: 90%;
                 margin: 0 auto;
@@ -796,19 +794,19 @@ ul {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-    
+
     }
-    
+
     &__content-price > .card {
         padding-top: 1rem;
 
     }
-    
+
     .card__image {
-    
+
         height: 180px;
     }
-       
+
 
 
     .card {
@@ -820,7 +818,7 @@ ul {
         margin: 1rem 1rem 3rem;
         position: relative;
         width: 300px;
-        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1), 0 15px 12px rgba(0, 0, 0, 0.22);
 
         &__image {
             @include mq (sm) {
@@ -912,7 +910,7 @@ ul {
         height: 13.5rem;
     }
     @include mq(sm) {
-        height: 10rem;
+        height: 7.5rem;
         display: flex;
         flex-direction: column;
     }
@@ -958,7 +956,9 @@ ul {
             left: 5rem;
         }
         @include mq(sm) {
-            width: 90%;
+            width: 100%;
+            bottom: .3rem;
+            left: 4.5rem;
         }
 
     }
@@ -988,8 +988,8 @@ ul {
             padding: 0.3rem;
             font-size: 1.1rem;
             line-height: 2;
-            right: 3rem;
-            bottom: 1rem;
+            right: 1rem;
+            bottom: -6rem;
         }
 
     }
@@ -1169,7 +1169,7 @@ ul {
             top: 25%;
             right: 3%;
             z-index: 2;
-            width: 100px;
+            width: 130px;
             height: 150px;
 
             @include  mq (sm) {
@@ -1231,6 +1231,10 @@ ul {
         @include btn-square;
         z-index: 3;
 
+        br {
+            display: none;
+        }
+
         @include mq(md) {
             font-size: 1.2rem;
 
@@ -1255,7 +1259,12 @@ ul {
     background-size: contain;
     text-align: center;
     padding-top: 6rem;
-    margin: 3rem 0; 
+    margin: 3rem 0;
+
+    @include mq(sm) {
+        padding-top: 3rem;
+        margin-bottom: 3rem;
+    }
 
 
     &__title {
@@ -1288,6 +1297,11 @@ ul {
                 width: 70%;
             }
 
+             @include mq(sm) {
+                font-size: 1.2rem;
+                padding-left: 3rem;
+    }
+
             &.active::after {
                 content: "\f068";
                 font-family: FontAwesome;
@@ -1304,6 +1318,11 @@ ul {
                 top: 1rem;
                 left: 3rem;
                 font-size: 1.6rem;
+
+                 @include mq(sm) {
+                    left: 1rem;
+                    top: 1.5rem ;
+    }
             }
 
             &::after {
@@ -1327,6 +1346,11 @@ ul {
             background-color: #fff;
             position: relative;
 
+             @include mq(sm) {
+                font-size: 1rem;
+                padding-left: 3rem;
+    }
+
             &::before {
                 position: absolute;
                 content: "A";
@@ -1334,12 +1358,20 @@ ul {
                 left: 3rem;
                 font-size: 1.6rem;
                 color: darken($green, 40%);
+
+                 @include mq(sm) {
+                left: 1rem;
+    }
             }
 
         }
 
         &:last-of-type {
             margin-bottom: 8rem;
+
+            @include mq (sm){
+                margin-bottom: 5rem;
+            }
         }
     }
 
@@ -1354,12 +1386,17 @@ ul {
     border-radius: 50%;
     z-index: 500;
 
+
     a {
         position: relative;
         display: block;
         text-decoration: none;
         font-size: 3rem;
         color: #FD6201;
+    @include mq (sm) {
+        right: 15px;
+        bottom: -70px;
+    }
     }
 
 }
@@ -1374,6 +1411,10 @@ ul {
     text-align: center;
     border-bottom: .3rem solid $orange;
 
+    @include mq (sm) {
+        margin-top: 4.5rem;
+    }
+
     &__nav {
         width: 35%;
         margin: 0 auto;
@@ -1385,6 +1426,10 @@ ul {
             width: 80%;
             padding-top: 1rem;
         }
+        @include mq (sm) {
+            width: 90%;
+            padding-top: 1rem;
+        }
 
         &-list {
 
@@ -1392,10 +1437,19 @@ ul {
                 color: $black;
                 font-size: 0.8rem;
 
+                @include mq (sm) {
+                    font-size: 0.5rem;
+                }
+
                 &:hover {
                     color: #ffffff;
                 }
             }
+        }
+    }
+    small {
+        @include mq (sm) {
+            font-size: 0.3em;
         }
     }
 }
